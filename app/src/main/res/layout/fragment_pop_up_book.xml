@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.PopUpBookFragment">
+
+    <FrameLayout
+        android:id="@+id/sheet"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
+        android:layout_marginTop="192dp"
+        android:background="@drawable/rounded"
+        app:layout_behavior="com.google.android.material.bottom-sheet.BottomSheetBehavior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageButton
+            android:id="@+id/btn_bookSheet"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center|top"
+            android:src="@drawable/baseline"
+            android:background="@drawable/icon_home"/>
+
+
+    </FrameLayout>
+
+</FrameLayout>
