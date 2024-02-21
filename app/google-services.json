@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "334985079641",
+    "project_id": "boobook-4629e",
+    "storage_bucket": "boobook-4629e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334985079641:android:523f7d0f956c3038e67a48",
+        "android_client_info": {
+          "package_name": "com.example.dntylancar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJBLybTKuuHfCh-XDvW03rVgF_uLatHXw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

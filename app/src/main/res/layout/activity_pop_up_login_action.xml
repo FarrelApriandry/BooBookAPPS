@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/TRANSPARENT"
+    android:id="@+id/popUpLogin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_auth_log_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/card_auth_login_header"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="94dp"
+            android:fontFamily="@font/poppins"
+            android:text="Silahkan Masuk untuk menikmati layanan"
+            android:textColor="#292929"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/btn_layout"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="135dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="135dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@+id/btn_close_card"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card_auth_login_header">
+
+            <ImageButton
+                android:id="@+id/btn_auth_log_google"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="14dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="false"
+                android:background="@null"
+                android:contentDescription="btn_auth_google"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_auth_login_google" />
+
+            <ImageButton
+                android:id="@+id/btn_auth_log_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:contentDescription="btn_auth_login"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_auth_login_email" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_close_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="59dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="59dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_close"
+            android:fontFamily="@font/poppins"
+            android:text="Tutup"
+            android:textAllCaps="false"
+            android:textColor="@color/duasembilan"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
