@@ -149,6 +149,10 @@ class GuestLoginActivity : AppCompatActivity() {
             openGoogleAccountPicker()
         }
 
+        btnLogEmail.setOnClickListener() {
+            startActivity(Intent(this@GuestLoginActivity, LoginActivity::class.java))
+        }
+
         btnCLose.setOnClickListener {
             dialog.dismiss()
         }
