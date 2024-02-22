@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewStub
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -59,7 +60,6 @@ class MainActivity : AppCompatActivity() {
             // Add the inflated layout to the parent view
             val parentView = findViewById<ViewGroup>(R.id.parent_stub) // Replace with the actual ID of the parent view
             parentView.addView(layout)
-
             currentLayout = layout
         }
 
@@ -78,7 +78,6 @@ class MainActivity : AppCompatActivity() {
             // Add the inflated layout to the parent view
             val parentView = findViewById<ViewGroup>(R.id.parent_stub) // Replace with the actual ID of the parent view
             parentView.addView(layout)
-
             currentLayout = layout
 
             val btnTerbaru = findViewById<Button>(R.id.btn_terkini_koleksi)
