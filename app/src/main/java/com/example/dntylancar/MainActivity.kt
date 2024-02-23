@@ -14,6 +14,8 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
+import com.example.dntylancar.databinding.ActivityPopUpReportBinding
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class MainActivity : AppCompatActivity() {
 
@@ -199,8 +201,26 @@ class MainActivity : AppCompatActivity() {
             parentView.addView(layout)
 
             currentLayout = layout
-        }
 
+            val btnAddReport = findViewById<ImageButton>(R.id.btn_add_report)
+
+            btnAddReport.setOnClickListener {
+                showBottomSheet()
+            }
+
+        }
     }
 
+    private fun showBottomSheet(){
+        val sheetDialog = BottomSheetDialog(this)
+        val sheetBinding = ActivityPopUpReportBinding.inflate(layoutInflater)
+        sheetDialog.apply {
+            setContentView(sheetBinding.root)
+            show()
+        }
+
+        sheetBinding.btnSend.setOnClickListener{
+            sheetDialog.dismiss()
+        }
+    }
 }

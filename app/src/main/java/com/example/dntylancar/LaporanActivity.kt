@@ -7,7 +7,6 @@ import com.example.dntylancar.databinding.ActivityLaporanBinding
 import com.example.dntylancar.databinding.ActivityPopUpReportBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-
 class LaporanActivity : AppCompatActivity() {
     private val binding by lazy { ActivityLaporanBinding.inflate(layoutInflater)}
     override fun onCreate(savedInstanceState: Bundle?) {
