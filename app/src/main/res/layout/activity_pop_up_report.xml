@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="?android:attr/buttonStyleSmall"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/TRANSPARENT"
+    android:id="@+id/popUpLogin">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/pop_up_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+
+        >
+
+
+        <TextView
+            android:id="@+id/Title_Report"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="94dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Laporan Sistem BooBook App"
+            android:textColor="#292929"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.486"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputReport"
+            android:layout_width="366dp"
+            android:layout_height="385dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="20dp"
+            android:hint="Tulis Laporanmu di sini"
+            android:singleLine="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Title_Report">
+            >
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="59dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="59dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_close"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
+            android:textColor="@color/duasembilan"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputReport"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

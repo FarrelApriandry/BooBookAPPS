@@ -6,11 +6,11 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/btn_add_report"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_marginTop="440dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="608dp"
+        android:layout_marginEnd="52dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
