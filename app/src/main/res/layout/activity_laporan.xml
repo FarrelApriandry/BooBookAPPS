@@ -16,4 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/add_icon_black" />
+    <TextView
+        android:layout_width=""
+        android:layout_height=""></TextView>
 </androidx.constraintlayout.widget.ConstraintLayout>
