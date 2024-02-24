@@ -2,19 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popUpLogin"
     style="?android:attr/buttonStyleSmall"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/TRANSPARENT"
-    >
+    android:background="@color/TRANSPARENT">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/pop_up_report"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/rounded_popup"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,73 +21,72 @@
         >
 
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="100dp"
+            android:layout_height="6dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_homebar_iphone"
+            app:layout_constraintBottom_toTopOf="@id/Title_Report"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/Title_Report"
             android:layout_width="wrap_content"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="95dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginEnd="94dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="95dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Laporan Sistem BooBook App"
             android:textColor="#292929"
             android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.486"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/view" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputReport"
-            android:layout_width="366dp"
-            android:layout_height="385dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="26dp"
-            android:background="@drawable/rounded_bg_report"
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="0dp"
+            android:layout_height="230dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_popup"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="Tulis Laporanmu di sini"
+            android:inputType="textMultiLine"
+            android:padding="13dp"
+            android:scrollbars="vertical"
             android:singleLine="false"
-            app:layout_constraintBottom_toTopOf="@+id/btn_send"
+            app:boxBackgroundMode="none"
+            app:layout_constraintBottom_toTopOf="@+id/btn_send_report"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/Title_Report">
-            >
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Tuliskan Laporanmu di sini"
-                    android:maxLines="10"/>
-            </com.google.android.material.textfield.TextInputLayout>
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintTop_toBottomOf="@+id/Title_Report" />
 
         <Button
-            android:id="@+id/btn_send"
+            android:id="@+id/btn_send_report"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="59dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="59dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
-            android:background="@drawable/btn_close"
+            android:background="@drawable/btn_close_black"
             android:fontFamily="@font/poppins_medium"
-            android:textAllCaps="false"
-            android:textColor="@color/duasembilan"
-            android:textSize="12sp"
             android:text="Kirim"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputReport"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextText" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

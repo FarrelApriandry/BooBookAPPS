@@ -219,7 +219,7 @@ class MainActivity : AppCompatActivity() {
             show()
         }
 
-        sheetBinding.btnSend.setOnClickListener{
+        sheetBinding.btnSendReport.setOnClickListener{
             sheetDialog.dismiss()
         }
     }

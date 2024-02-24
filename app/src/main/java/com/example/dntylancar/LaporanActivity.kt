@@ -13,22 +13,22 @@ class LaporanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.btnAddReport.setOnClickListener {
-            showBottomSheet()
-        }
+//        binding.btnAddReport.setOnClickListener {
+//            showBottomSheet()
+//        }
     }
 
-    private fun showBottomSheet(){
-        val sheetDialog = BottomSheetDialog(this)
-        val sheetBinding = ActivityPopUpReportBinding.inflate(layoutInflater)
-        sheetDialog.apply {
-            setContentView(sheetBinding.root)
-            show()
-        }
-
-        sheetBinding.btnSend.setOnClickListener{
-            sheetDialog.dismiss()
-        }
-    }
+//    private fun showBottomSheet(){
+//        val sheetDialog = BottomSheetDialog(this)
+//        val sheetBinding = ActivityPopUpReportBinding.inflate(layoutInflater)
+//        sheetDialog.apply {
+//            setContentView(sheetBinding.root)
+//            show()
+//        }
+//
+//        sheetBinding.btnSend_report.setOnClickListener{
+//            sheetDialog.dismiss()
+//        }
+//    }
 
 }
