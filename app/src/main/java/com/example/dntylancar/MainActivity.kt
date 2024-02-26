@@ -12,6 +12,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
+import com.smarteist.autoimageslider.SliderView
 import com.example.dntylancar.databinding.ActivityPopUpReportBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -24,6 +25,18 @@ class MainActivity : AppCompatActivity() {
             (view.parent as ViewGroup).removeView(view)
         }
     }
+
+    // on below line we are creating a variable
+    // for our array list for storing our images.
+    lateinit var imageUrl: ArrayList<String>
+
+    // on below line we are creating
+    // a variable for our slider view.
+    lateinit var sliderView: SliderView
+
+    // on below line we are creating
+    // a variable for our slider adapter.
+    lateinit var sliderAdapter: SliderAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -44,6 +57,41 @@ class MainActivity : AppCompatActivity() {
         val btnKoleksiActive = findViewById<ImageButton>(R.id.btn_koleksi)
         val btnPeringkatActive = findViewById<ImageButton>(R.id.btn_peringkat)
         val btnLaporanActive = findViewById<ImageButton>(R.id.btn_laporan)
+
+        sliderView = findViewById(R.id.slider)
+
+        // on below line we are initializing
+        // our image url array list.
+        imageUrl = ArrayList()
+
+        // on below line we are adding data to our image url array list.
+        imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_1)
+        imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_2)
+        imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_3)
+
+        // on below line we are initializing our
+        // slider adapter and adding our list to it.
+        sliderAdapter = SliderAdapter( imageUrl)
+
+        // on below line we are setting auto cycle direction
+        // for our slider view from left to right.
+        sliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
+
+        // on below line we are setting adapter for our slider.
+        sliderView.setSliderAdapter(sliderAdapter)
+
+        // on below line we are setting scroll time
+        // in seconds for our slider view.
+        sliderView.scrollTimeInSec = 3
+
+        // on below line we are setting auto cycle
+        // to true to auto slide our items.
+        sliderView.isAutoCycle = true
+
+        // on below line we are calling start
+        // auto cycle to start our cycle.
+        sliderView.startAutoCycle()
+
 
         btnHomeActive.setOnClickListener(){
             btnHomeActive.setImageResource(R.drawable.ic_homepage_active)
