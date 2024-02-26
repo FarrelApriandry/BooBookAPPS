@@ -17,7 +17,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".activity_guest_konten_buku"
+            android:name=".GuestKontenBuku"
             android:exported="false" />
         <activity
             android:name=".PopUpReportActivity"

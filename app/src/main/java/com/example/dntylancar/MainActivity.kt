@@ -60,38 +60,18 @@ class MainActivity : AppCompatActivity() {
 
         sliderView = findViewById(R.id.slider)
 
-        // on below line we are initializing
-        // our image url array list.
         imageUrl = ArrayList()
 
-        // on below line we are adding data to our image url array list.
         imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_1)
         imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_2)
         imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_3)
 
-        // on below line we are initializing our
-        // slider adapter and adding our list to it.
         sliderAdapter = SliderAdapter( imageUrl)
-
-        // on below line we are setting auto cycle direction
-        // for our slider view from left to right.
         sliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
-
-        // on below line we are setting adapter for our slider.
         sliderView.setSliderAdapter(sliderAdapter)
-
-        // on below line we are setting scroll time
-        // in seconds for our slider view.
         sliderView.scrollTimeInSec = 3
-
-        // on below line we are setting auto cycle
-        // to true to auto slide our items.
         sliderView.isAutoCycle = true
-
-        // on below line we are calling start
-        // auto cycle to start our cycle.
         sliderView.startAutoCycle()
-
 
         btnHomeActive.setOnClickListener(){
             btnHomeActive.setImageResource(R.drawable.ic_homepage_active)
@@ -109,6 +89,21 @@ class MainActivity : AppCompatActivity() {
             val parentView = findViewById<ViewGroup>(R.id.parent_stub) // Replace with the actual ID of the parent view
             parentView.addView(layout)
             currentLayout = layout
+
+            sliderView = findViewById(R.id.slider)
+
+            imageUrl = ArrayList()
+
+            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_1)
+            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_2)
+            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_3)
+
+            sliderAdapter = SliderAdapter( imageUrl)
+            sliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
+            sliderView.setSliderAdapter(sliderAdapter)
+            sliderView.scrollTimeInSec = 3
+            sliderView.isAutoCycle = true
+            sliderView.startAutoCycle()
         }
 
         btnKoleksiActive.setOnClickListener(){
