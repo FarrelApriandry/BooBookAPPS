@@ -41,13 +41,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_register"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_medium"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="40dp"
+        android:fontFamily="@font/poppins_light"
         android:text="Login Sekarang!"
         android:textColor="#6887B7"
-        android:textSize="15sp"
-        app:layout_constraintStart_toEndOf="@+id/login"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_register" />
 
     <Button
@@ -58,11 +58,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="40dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
         android:background="@drawable/btn_blck"
         android:fontFamily="@font/poppins_medium"
         android:text="REGISTER"
         android:textColor="@color/white"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout_pass" />
 
@@ -71,13 +73,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_register"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/poppins_medium"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="5dp"
+        android:fontFamily="@font/poppins_light"
         android:text="Sudah Mempunyai Akun?"
         android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toStartOf="@+id/login2"
         app:layout_constraintTop_toBottomOf="@+id/button_register" />
 
     <TextView
@@ -123,68 +125,95 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_nama"
         android:layout_width="330dp"
-        android:layout_height="wrap_content"
+        android:layout_height="49dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="6dp"
+        android:background="@drawable/rounded_btn"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         app:boxStrokeColor="#000000"
-        app:hintTextColor="#000000"
+        app:hintEnabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nama_lengkap">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText_nama"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
             android:hint="Isi di sini"
-            android:singleLine="true" />
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:fontFamily="@font/poppins"
+            android:textSize="16sp"
+            android:textColorHint="@color/twentynine30"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_NIK"
         android:layout_width="330dp"
-        android:layout_height="wrap_content"
+        android:layout_height="49dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="6dp"
+        android:background="@drawable/rounded_btn"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         app:boxStrokeColor="#000000"
-        app:hintTextColor="#000000"
+        app:hintEnabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomor_induk">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText_NIK"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
             android:hint="Isi di sini"
-            android:singleLine="true" />
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:fontFamily="@font/poppins"
+            android:textSize="16sp"
+            android:textColorHint="@color/twentynine30"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_email"
         android:layout_width="330dp"
-        android:layout_height="wrap_content"
+        android:layout_height="49dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="6dp"
+        android:background="@drawable/rounded_btn"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         app:boxStrokeColor="#000000"
-        app:hintTextColor="#000000"
+        app:hintEnabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@null"
             android:hint="Isi di sini"
-            android:singleLine="true" />
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:fontFamily="@font/poppins"
+            android:textSize="16sp"
+            android:textColorHint="@color/twentynine30" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_pass"
         android:layout_width="330dp"
-        android:layout_height="wrap_content"
+        android:layout_height="49dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="6dp"
+        android:background="@drawable/rounded_btn"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         app:boxStrokeColor="#000000"
-        app:hintTextColor="#000000"
+        app:hintEnabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:endIconMode="password_toggle">
@@ -192,10 +221,15 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText_pass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Isi di sini"
+            android:layout_height="match_parent"
             android:inputType="textPassword"
-            android:singleLine="true" />
+            android:background="@null"
+            android:hint="Isi di sini"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:fontFamily="@font/poppins"
+            android:textSize="16sp"
+            android:textColorHint="@color/twentynine30"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
