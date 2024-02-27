@@ -8,10 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewStub
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
+import com.example.dntylancar.databinding.ActivityBukuLampiranBinding
 import com.smarteist.autoimageslider.SliderView
 import com.example.dntylancar.databinding.ActivityPopUpReportBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -19,6 +21,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 class MainActivity : AppCompatActivity() {
 
     var currentLayout: View? = null
+    var stub_buku: View? = null
 
     fun removeLayout(view: View) {
         if (view.parent != null) {
@@ -26,16 +29,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // on below line we are creating a variable
-    // for our array list for storing our images.
     lateinit var imageUrl: ArrayList<String>
-
-    // on below line we are creating
-    // a variable for our slider view.
     lateinit var sliderView: SliderView
-
-    // on below line we are creating
-    // a variable for our slider adapter.
     lateinit var sliderAdapter: SliderAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,9 +57,14 @@ class MainActivity : AppCompatActivity() {
 
         imageUrl = ArrayList()
 
-        imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_1)
         imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_2)
         imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_3)
+        imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_4)
+        imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_5)
+        imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_6)
+        imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_8)
+        imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_7)
+
 
         sliderAdapter = SliderAdapter( imageUrl)
         sliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         val stub_guest_kb = findViewById<ViewStub>(R.id.stub_guest_konten_buku)
         stub_guest_kb.layoutResource = R.layout.activity_guest_konten_buku
         val inflate = stub_guest_kb.inflate()
-        currentLayout = inflate
+        stub_buku = inflate
 
         btnHomeActive.setOnClickListener(){
             btnHomeActive.setImageResource(R.drawable.ic_homepage_active)
@@ -95,13 +95,22 @@ class MainActivity : AppCompatActivity() {
             parentView.addView(layout)
             currentLayout = layout
 
+            val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
+            btn_buku.setOnClickListener() {
+                showDialog()
+            }
+
             sliderView = findViewById(R.id.slider)
 
             imageUrl = ArrayList()
 
-            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_1)
+            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_8)
             imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_2)
             imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_3)
+            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_4)
+            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_5)
+            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_6)
+            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_7)
 
             sliderAdapter = SliderAdapter( imageUrl)
             sliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
@@ -113,7 +122,7 @@ class MainActivity : AppCompatActivity() {
             val stub_guest_kb = findViewById<ViewStub>(R.id.stub_guest_konten_buku)
             stub_guest_kb.layoutResource = R.layout.activity_guest_konten_buku
             val inflate = stub_guest_kb.inflate()
-            currentLayout = inflate
+            stub_buku = inflate
         }
 
         btnKoleksiActive.setOnClickListener(){
@@ -123,6 +132,7 @@ class MainActivity : AppCompatActivity() {
             btnLaporanActive.setImageResource(R.drawable.ic_laporan_inactive)
 
             removeLayout(currentLayout!!)
+            removeLayout(stub_buku!!)
 
             // Inflate the new layout
             val inflater = layoutInflater
@@ -193,6 +203,7 @@ class MainActivity : AppCompatActivity() {
             btnLaporanActive.setImageResource(R.drawable.ic_laporan_inactive)
 
             removeLayout(currentLayout!!)
+            removeLayout(stub_buku!!)
 
             // Inflate the new layout
             val inflater = layoutInflater
@@ -242,6 +253,7 @@ class MainActivity : AppCompatActivity() {
             btnLaporanActive.setImageResource(R.drawable.ic_laporan_active)
 
             removeLayout(currentLayout!!)
+            removeLayout(stub_buku!!)
 
             // Inflate the new layout
             val inflater = layoutInflater
@@ -260,6 +272,17 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    private  fun showBook(){
+
+        val lampiranBuku = BottomSheetDialog(this)
+        val bindingBuku = ActivityBukuLampiranBinding.inflate(layoutInflater)
+        lampiranBuku.apply {
+            setContentView(bindingBuku.root)
+            show()
+        }
+
     }
 
     private fun showBottomSheet(){

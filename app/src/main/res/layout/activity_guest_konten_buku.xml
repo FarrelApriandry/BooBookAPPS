@@ -175,7 +175,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/frameLayout2"
+            android:id="@+id/buku_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
