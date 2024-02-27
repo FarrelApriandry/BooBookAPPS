@@ -32,7 +32,6 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:maxWidth="1000dp"
-        android:maxHeight="1000dp"
         android:minWidth="0dp"
         android:minHeight="0dp"
         app:layout_constraintBottom_toTopOf="@+id/include2"
@@ -43,7 +42,7 @@
         <ViewStub
             android:id="@+id/layout_stub"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:inflatedId="@+id/message_layout"
             app:layout_constraintBottom_toBottomOf="parent"

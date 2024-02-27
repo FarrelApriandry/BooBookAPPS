@@ -69,9 +69,14 @@ class MainActivity : AppCompatActivity() {
         sliderAdapter = SliderAdapter( imageUrl)
         sliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
         sliderView.setSliderAdapter(sliderAdapter)
-        sliderView.scrollTimeInSec = 3
+        sliderView.scrollTimeInSec = 15
         sliderView.isAutoCycle = true
         sliderView.startAutoCycle()
+
+        val stub_guest_kb = findViewById<ViewStub>(R.id.stub_guest_konten_buku)
+        stub_guest_kb.layoutResource = R.layout.activity_guest_konten_buku
+        val inflate = stub_guest_kb.inflate()
+        currentLayout = inflate
 
         btnHomeActive.setOnClickListener(){
             btnHomeActive.setImageResource(R.drawable.ic_homepage_active)
@@ -101,9 +106,14 @@ class MainActivity : AppCompatActivity() {
             sliderAdapter = SliderAdapter( imageUrl)
             sliderView.autoCycleDirection = SliderView.LAYOUT_DIRECTION_LTR
             sliderView.setSliderAdapter(sliderAdapter)
-            sliderView.scrollTimeInSec = 3
+            sliderView.scrollTimeInSec = 10
             sliderView.isAutoCycle = true
             sliderView.startAutoCycle()
+
+            val stub_guest_kb = findViewById<ViewStub>(R.id.stub_guest_konten_buku)
+            stub_guest_kb.layoutResource = R.layout.activity_guest_konten_buku
+            val inflate = stub_guest_kb.inflate()
+            currentLayout = inflate
         }
 
         btnKoleksiActive.setOnClickListener(){
