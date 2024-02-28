@@ -85,9 +85,8 @@ class MainActivity : AppCompatActivity() {
             showBook()
             val stub_buku = findViewById<ViewStub>(R.id.stub_buku)
             stub_buku.layoutResource = R.layout.fragment_detail_buku
-            val inflatedd = stub_buku.inflate()
-            stub_detailBuku = inflatedd
-
+            val inflate_stub_buku = stub_buku.inflate()
+            stub_detailBuku = inflate_stub_buku
         }
 
         btnHomeActive.setOnClickListener(){
@@ -130,6 +129,15 @@ class MainActivity : AppCompatActivity() {
             stub_guest_kb.layoutResource = R.layout.activity_guest_konten_buku
             val inflate = stub_guest_kb.inflate()
             stub_buku = inflate
+
+            val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
+            btn_buku.setOnClickListener() {
+                showBook()
+//                val stub_buku = findViewById<ViewStub>(R.id.stub_buku)
+//                stub_buku.layoutResource = R.layout.fragment_detail_buku
+//                val inflate_stub_buku = stub_buku.inflate()
+//                stub_detailBuku = inflate_stub_buku
+            }
         }
 
         btnKoleksiActive.setOnClickListener(){
@@ -283,8 +291,7 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-
-    private  fun showDialog(){
+    fun showBook(){
 
         val lampiranBuku = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
         val bindingBuku = ActivityBukuLampiranBinding.inflate(layoutInflater)
