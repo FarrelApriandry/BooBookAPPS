@@ -225,6 +225,7 @@ class MainActivity : AppCompatActivity() {
             val btnPinjaman = findViewById<Button>(R.id.btn_pinjaman_peringkat)
             val btnKunjungan = findViewById<Button>(R.id.btn_kunjungan_peringkat)
             val textViewPinjaman = findViewById<TextView>(R.id.peringkatText)
+            val textViewPeringkat = findViewById<TextView>(R.id.Pinjaman_Kunjungan)
 
             val underlineBtnPinjaman =findViewById<View>(R.id.underlineBtn_pinjaman_peringkat)
             val underlineBtnPeringkat =findViewById<View>(R.id.underlineBtn_kunjungan_peringkat)
@@ -239,6 +240,7 @@ class MainActivity : AppCompatActivity() {
                 btnPinjaman.setTextSize(TypedValue.COMPLEX_UNIT_PX,resources.getDimension(R.dimen.sixteen_sp))
                 btnKunjungan.setTextSize(TypedValue.COMPLEX_UNIT_PX,resources.getDimension(R.dimen.fourteen_sp))
                 textViewPinjaman.text = getString(R.string.peringkatPinjaman)
+                textViewPeringkat.text = getString(R.string.peringkatPinjaman1)
             }
 
             btnKunjungan.setOnClickListener() {
@@ -249,6 +251,7 @@ class MainActivity : AppCompatActivity() {
                 btnPinjaman.setTextSize(TypedValue.COMPLEX_UNIT_PX,resources.getDimension(R.dimen.fourteen_sp))
                 btnKunjungan.setTextSize(TypedValue.COMPLEX_UNIT_PX,resources.getDimension(R.dimen.sixteen_sp))
                 textViewPinjaman.text = getString(R.string.peringkatKunjungan)
+                textViewPeringkat.text = getString(R.string.peringkatKunjungan1)
             }
 
         }
@@ -281,7 +284,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private  fun showBook(){
+    private  fun showDialog(){
 
         val lampiranBuku = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
         val bindingBuku = ActivityBukuLampiranBinding.inflate(layoutInflater)
