@@ -16,12 +16,14 @@ import androidx.core.view.isInvisible
 import com.example.dntylancar.databinding.ActivityBukuLampiranBinding
 import com.smarteist.autoimageslider.SliderView
 import com.example.dntylancar.databinding.ActivityPopUpReportBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class MainActivity : AppCompatActivity() {
 
     var currentLayout: View? = null
     var stub_buku: View? = null
+    var stub_detailBuku: View? = null
 
     fun removeLayout(view: View) {
         if (view.parent != null) {
@@ -78,6 +80,16 @@ class MainActivity : AppCompatActivity() {
         val inflate = stub_guest_kb.inflate()
         stub_buku = inflate
 
+        val btn_buku = findViewById(R.id.buku_1) as FrameLayout
+        btn_buku.setOnClickListener(){
+            showBook()
+            val stub_buku = findViewById<ViewStub>(R.id.stub_buku)
+            stub_buku.layoutResource = R.layout.fragment_detail_buku
+            val inflatedd = stub_buku.inflate()
+            stub_detailBuku = inflatedd
+
+        }
+
         btnHomeActive.setOnClickListener(){
             btnHomeActive.setImageResource(R.drawable.ic_homepage_active)
             btnKoleksiActive.setImageResource(R.drawable.ic_library_inactive)
@@ -94,11 +106,6 @@ class MainActivity : AppCompatActivity() {
             val parentView = findViewById<ViewGroup>(R.id.parent_stub) // Replace with the actual ID of the parent view
             parentView.addView(layout)
             currentLayout = layout
-
-            val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
-            btn_buku.setOnClickListener() {
-                showDialog()
-            }
 
             sliderView = findViewById(R.id.slider)
 
@@ -276,13 +283,17 @@ class MainActivity : AppCompatActivity() {
 
     private  fun showBook(){
 
-        val lampiranBuku = BottomSheetDialog(this)
+        val lampiranBuku = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
         val bindingBuku = ActivityBukuLampiranBinding.inflate(layoutInflater)
         lampiranBuku.apply {
             setContentView(bindingBuku.root)
+            val constraintLayout1 = bindingBuku.constraintLayout3
+            val constraintLayout2 = bindingBuku.constraintLayout4
+            val h = constraintLayout1.height + constraintLayout2.height
+            val bottomSheetBehavior = BottomSheetBehavior.from(bindingBuku.root.parent as View)
+            bottomSheetBehavior.peekHeight = 1800
             show()
         }
-
     }
 
     private fun showBottomSheet(){
