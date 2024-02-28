@@ -9,43 +9,44 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="190dp"
-        android:layout_height="32dp"
+        android:layout_width="150dp"
+        android:layout_height="22dp"
         android:orientation="horizontal"
+        android:layout_marginBottom="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <Button
-            android:id="@+id/btn_pinjaman_peringkat"
+            android:id="@+id/btn_detail_buku"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="14dp"
-            android:layout_marginStart="2dp"
             android:layout_weight="1"
             android:background="@null"
-            android:text="Pinjaman"
+            android:text="detail"
             android:textAllCaps="false"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            >
+        </Button>
 
         <Button
-            android:id="@+id/btn_kunjungan_peringkat"
-            android:layout_width="110dp"
+            android:id="@+id/btn_sinopsis_buku"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
             android:layout_weight="1"
             android:background="@null"
-            android:text="Kunjungan"
+            android:text="sinopsis"
             android:textAllCaps="false"
             android:textColor="#80292929"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="190dp
-"
+        android:layout_width="150dp"
         android:layout_height="2dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,21 +54,19 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <View
-            android:id="@+id/underlineBtn_pinjaman_peringkat"
-            android:layout_width="79dp"
+            android:id="@+id/underlineBtn_buku_detail"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="18dp"
             android:layout_weight="1"
             android:background="@drawable/underlina_shape"/>
 
         <View
-            android:id="@+id/underlineBtn_kunjungan_peringkat"
-            android:layout_width="79dp"
+            android:id="@+id/underlineBtn_buku_sinopsis"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="8dp"
             android:layout_weight="1"
-            android:background="@drawable/underlina_shape"/>
+            android:background="@drawable/underlina_shape"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 
