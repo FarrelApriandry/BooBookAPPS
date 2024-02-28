@@ -11,6 +11,8 @@
     <string name="koleksiRiwayat">Di sini kamu bisa melihat buku yang sudah kamu pinjam</string>
     <string name="peringkatPinjaman">Di sini kamu bisa melihat peringkat pinjaman di Boobook</string>
     <string name="peringkatKunjungan">Di sini kamu bisa melihat peringkat kunjungan di Boobook</string>
+    <string name="peringkatPinjaman1">Pinjaman</string>
+    <string name="peringkatKunjungan1">Kunjungan</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
