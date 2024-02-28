@@ -34,61 +34,18 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-    <LinearLayout
-        android:layout_width="411dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="270dp"
-        android:background="@drawable/rounded_leaderboard"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <include
+        android:id="@+id/include_peringkat_user"
+        layout="@layout/activity_peringkat_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="128dp"
+        android:layout_marginEnd="128dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include_peringkat"
-        app:layout_constraintVertical_bias="1.0">
-
-        <TextView
-            android:id="@+id/textViewUsername"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_weight="2"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="center"
-            android:text="Username"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/Pinjaman_Kunjungan"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="center"
-            android:text="@string/peringkatPinjaman1"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-        <TextView
-            android:id="@+id/textViewPeringkat"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="16dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_medium"
-            android:gravity="center"
-            android:text="Peringkat"
-            android:textColor="#FFFFFF"
-            android:textSize="15sp" />
-
-    </LinearLayout>
-
+        app:layout_constraintTop_toBottomOf="@+id/include_peringkat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

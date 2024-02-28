@@ -3,6 +3,7 @@ package com.example.dntylancar
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 
 class LoginActivity : AppCompatActivity() {
@@ -14,6 +15,7 @@ class LoginActivity : AppCompatActivity() {
         registerLink.setOnClickListener(){
             startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
         }
+
 
     }
 }
