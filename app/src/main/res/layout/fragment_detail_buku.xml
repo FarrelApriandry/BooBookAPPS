@@ -178,7 +178,7 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins"
                     android:text="10"
-                    android:textColor="#222831"
+                    android:textColor="#1C8125"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/kategori_buku" />
@@ -190,7 +190,7 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/poppins"
                     android:text="4.8/5.0"
-                    android:textColor="#222831"
+                    android:textColor="#FFD02C"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/stokTersedia_buku" />

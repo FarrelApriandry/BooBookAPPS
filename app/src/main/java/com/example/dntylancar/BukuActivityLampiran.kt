@@ -6,6 +6,6 @@ import android.os.Bundle
 class BukuActivityLampiran : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_buku_lampiran)
+        setContentView(R.layout.fragment_buku_lampiran)
     }
 }

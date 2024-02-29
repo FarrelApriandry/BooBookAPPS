@@ -12,8 +12,10 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="412dp"
         android:layout_height="587dp"
+        android:layout_marginBottom="70dp"
         android:background="@color/TRANSPARENT"
         android:backgroundTint="@color/TRANSPARENT"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,6 +25,8 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/example_book_1"
+            android:scaleX="1"
+            android:scaleY="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -58,11 +62,10 @@
         android:id="@+id/constraintLayout4"
         android:layout_width="0dp"
         android:layout_height="563dp"
-        android:layout_marginTop="200dp"
         android:background="@drawable/book_sheet_background"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/textView9"
@@ -86,9 +89,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="27dp"
             android:layout_marginTop="5dp"
-            android:fontFamily="@font/poppins_light"
+            android:fontFamily="@font/poppins"
             android:text="Tersedia"
-            android:textColor="#1E5E24"
+            android:textColor="#1C8125"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -104,6 +107,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
         <FrameLayout
+            android:id="@+id/parent_stub_detail_buku"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
@@ -114,12 +118,26 @@
             app:layout_constraintTop_toBottomOf="@+id/include3">
 
             <ViewStub
-                android:id="@+id/stub_buku"
+                android:id="@+id/stub_detail_buku"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:inflatedId="@+id/message_layout" />
         </FrameLayout>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="75dp"
+            android:layout_marginEnd="75dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/btn_blck"
+            android:text="Pinjam"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,5 +1,6 @@
 package com.example.dntylancar
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -13,22 +14,26 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
-import com.example.dntylancar.databinding.ActivityBukuLampiranBinding
 import com.smarteist.autoimageslider.SliderView
 import com.example.dntylancar.databinding.ActivityPopUpReportBinding
+import com.example.dntylancar.databinding.FragmentBukuLampiranBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class MainActivity : AppCompatActivity() {
 
     var currentLayout: View? = null
-    var stub_buku: View? = null
-    var stub_detailBuku: View? = null
+    var stub_buku: View? =  null
 
     fun removeLayout(view: View) {
         if (view.parent != null) {
             (view.parent as ViewGroup).removeView(view)
         }
+    }
+
+    fun removeStub(view: View) {
+        val parent = view.parent as ViewGroup
+        parent.removeView(view)
     }
 
     lateinit var imageUrl: ArrayList<String>
@@ -80,13 +85,10 @@ class MainActivity : AppCompatActivity() {
         val inflate = stub_guest_kb.inflate()
         stub_buku = inflate
 
-        val btn_buku = findViewById(R.id.buku_1) as FrameLayout
-        btn_buku.setOnClickListener(){
+        val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
+
+        btn_buku.setOnClickListener() {
             showBook()
-            val stub_buku = findViewById<ViewStub>(R.id.stub_buku)
-            stub_buku.layoutResource = R.layout.fragment_detail_buku
-            val inflate_stub_buku = stub_buku.inflate()
-            stub_detailBuku = inflate_stub_buku
         }
 
         btnHomeActive.setOnClickListener(){
@@ -133,10 +135,6 @@ class MainActivity : AppCompatActivity() {
             val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
             btn_buku.setOnClickListener() {
                 showBook()
-//                val stub_buku = findViewById<ViewStub>(R.id.stub_buku)
-//                stub_buku.layoutResource = R.layout.fragment_detail_buku
-//                val inflate_stub_buku = stub_buku.inflate()
-//                stub_detailBuku = inflate_stub_buku
             }
         }
 
@@ -291,21 +289,73 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
-    fun showBook(){
-
+    fun showBook() {
         val lampiranBuku = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
-        val bindingBuku = ActivityBukuLampiranBinding.inflate(layoutInflater)
+        val bindingBuku = FragmentBukuLampiranBinding.inflate(layoutInflater)
         lampiranBuku.apply {
+
+            var inflatedView: View? = null
+
             setContentView(bindingBuku.root)
-            val constraintLayout1 = bindingBuku.constraintLayout3
-            val constraintLayout2 = bindingBuku.constraintLayout4
-            val h = constraintLayout1.height + constraintLayout2.height
+            val constraintLayout1 = bindingBuku.mainConstraint
+            val h = constraintLayout1.maxHeight
             val bottomSheetBehavior = BottomSheetBehavior.from(bindingBuku.root.parent as View)
-            bottomSheetBehavior.peekHeight = 1800
+            bottomSheetBehavior.peekHeight = h
             show()
+
+            val btn_detailBuku = findViewById<Button>(R.id.btn_detail_buku)
+            val btn_sinopsisBuku = findViewById<Button>(R.id.btn_sinopsis_buku)
+            val underline_detailBuku = findViewById<View>(R.id.underlineBtn_buku_detail)
+            val underline_sinopsisBuku = findViewById<View>(R.id.underlineBtn_buku_sinopsis)
+
+
+            val stub_detail_buku = findViewById<ViewStub>(R.id.stub_detail_buku)
+            stub_detail_buku?.layoutResource = R.layout.fragment_detail_buku
+            val inflate_f_detailBuku = stub_detail_buku?.inflate()
+            inflatedView = inflate_f_detailBuku
+
+            btn_detailBuku?.setOnClickListener() {
+                btn_detailBuku?.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.sixteen_sp))
+                btn_sinopsisBuku?.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.fourteen_sp))
+                btn_detailBuku?.setTextColor(Color.parseColor("#292929"))
+                btn_sinopsisBuku?.setTextColor(Color.parseColor("#80292929"))
+                val translationX = resources.getDimensionPixelSize(R.dimen.zero_dp).toFloat() // 75dp in pixels
+                val animator = ObjectAnimator.ofFloat(underline_detailBuku, "translationX", translationX)
+                animator.duration = 500 // 2 seconds
+                animator.start()
+
+                removeLayout(inflatedView!!)
+
+                val inflated_f_detailBuku = layoutInflater
+                val stub_detailBuku = inflated_f_detailBuku.inflate(R.layout.fragment_detail_buku, null, false)
+
+                val parent_stubDetailBuku = findViewById<ViewGroup>(R.id.parent_stub_detail_buku) // Replace with the actual ID of the parent view
+                parent_stubDetailBuku?.addView(stub_detailBuku)
+                inflatedView = stub_detailBuku
+
+            }
+
+            btn_sinopsisBuku?.setOnClickListener() {
+                btn_detailBuku?.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.fourteen_sp))
+                btn_sinopsisBuku?.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.sixteen_sp))
+                btn_detailBuku?.setTextColor(Color.parseColor("#80292929"))
+                btn_sinopsisBuku?.setTextColor(Color.parseColor("#292929"))
+                val translationX = resources.getDimensionPixelSize(R.dimen.translation_distance).toFloat() // 75dp in pixels
+                val animator = ObjectAnimator.ofFloat(underline_detailBuku, "translationX", translationX)
+                animator.duration = 500 // 2 seconds
+                animator.start()
+
+                removeLayout(inflatedView!!)
+
+                val inflated_f_detailBuku = layoutInflater
+                val stub_detailBuku = inflated_f_detailBuku.inflate(R.layout.fragment_sinopsis_buku, null, false)
+
+                val parent_stubDetailBuku = findViewById<ViewGroup>(R.id.parent_stub_detail_buku) // Replace with the actual ID of the parent view
+                parent_stubDetailBuku?.addView(stub_detailBuku)
+                inflatedView = stub_detailBuku
+            }
         }
     }
-
     private fun showBottomSheet(){
 
         val sheetDialog = BottomSheetDialog(this)
@@ -315,9 +365,10 @@ class MainActivity : AppCompatActivity() {
             setContentView(sheetBinding.root)
             show()
         }
-
         sheetBinding.btnSendReport.setOnClickListener{
             sheetDialog.dismiss()
         }
     }
+
+
 }
