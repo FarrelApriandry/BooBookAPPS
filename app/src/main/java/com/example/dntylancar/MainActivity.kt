@@ -284,7 +284,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private  fun showDialog(){
+    private  fun showBook(){
 
         val lampiranBuku = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
         val bindingBuku = ActivityBukuLampiranBinding.inflate(layoutInflater)
