@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import com.smarteist.autoimageslider.SliderView
+import com.example.dntylancar.databinding.FragmentPopUpReportBinding
 import com.example.dntylancar.databinding.FragmentBukuLampiranBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -356,7 +357,7 @@ class MainActivity : AppCompatActivity() {
     private fun showBottomSheet(){
 
         val sheetDialog = BottomSheetDialog(this)
-        val sheetBinding = ActivityPopUpReportBinding.inflate(layoutInflater)
+        val sheetBinding = FragmentPopUpReportBinding.inflate(layoutInflater)
         val layoutParams = ViewGroup.LayoutParams(200, 200)
         sheetDialog.apply {
             setContentView(sheetBinding.root)
