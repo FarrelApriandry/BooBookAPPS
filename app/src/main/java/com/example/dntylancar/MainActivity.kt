@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     var currentLayout: View? = null
     var stub_buku: View? =  null
+    var isLogin: Boolean = false
 
     fun removeLayout(view: View) {
         if (view.parent != null) {
@@ -81,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         sliderView.startAutoCycle()
 
         val stub_guest_kb = findViewById<ViewStub>(R.id.stub_guest_konten_buku)
-        stub_guest_kb.layoutResource = R.layout.activity_guest_konten_buku
+        stub_guest_kb.layoutResource = R.layout.fragment_konten_buku_terkini
         val inflate = stub_guest_kb.inflate()
         stub_buku = inflate
 
@@ -89,6 +90,12 @@ class MainActivity : AppCompatActivity() {
 
         btn_buku.setOnClickListener() {
             showBook()
+        }
+
+        if (isLogin == true) {
+            println("logged in")
+        } else {
+            println("not logged in")
         }
 
         btnHomeActive.setOnClickListener(){
@@ -128,7 +135,7 @@ class MainActivity : AppCompatActivity() {
             sliderView.startAutoCycle()
 
             val stub_guest_kb = findViewById<ViewStub>(R.id.stub_guest_konten_buku)
-            stub_guest_kb.layoutResource = R.layout.activity_guest_konten_buku
+            stub_guest_kb.layoutResource = R.layout.fragment_konten_buku_terkini
             val inflate = stub_guest_kb.inflate()
             stub_buku = inflate
 
@@ -218,12 +225,10 @@ class MainActivity : AppCompatActivity() {
             removeLayout(currentLayout!!)
             removeLayout(stub_buku!!)
 
-            // Inflate the new layout
             val inflater = layoutInflater
             val layout = inflater.inflate(R.layout.activity_peringkat, null, false)
 
-            // Add the inflated layout to the parent view
-            val parentView = findViewById<ViewGroup>(R.id.parent_stub) // Replace with the actual ID of the parent view
+            val parentView = findViewById<ViewGroup>(R.id.parent_stub)
             parentView.addView(layout)
 
             currentLayout = layout
@@ -231,7 +236,6 @@ class MainActivity : AppCompatActivity() {
             val btnPinjaman = findViewById<Button>(R.id.btn_pinjaman_peringkat)
             val btnKunjungan = findViewById<Button>(R.id.btn_kunjungan_peringkat)
             val textViewPinjaman = findViewById<TextView>(R.id.peringkatText)
-            val textViewPeringkat = findViewById<TextView>(R.id.Pinjaman_Kunjungan)
 
             val underlineBtnPinjaman =findViewById<View>(R.id.underlineBtn_pinjaman_peringkat)
             val underlineBtnPeringkat =findViewById<View>(R.id.underlineBtn_kunjungan_peringkat)
@@ -246,7 +250,6 @@ class MainActivity : AppCompatActivity() {
                 btnPinjaman.setTextSize(TypedValue.COMPLEX_UNIT_PX,resources.getDimension(R.dimen.sixteen_sp))
                 btnKunjungan.setTextSize(TypedValue.COMPLEX_UNIT_PX,resources.getDimension(R.dimen.fourteen_sp))
                 textViewPinjaman.text = getString(R.string.peringkatPinjaman)
-                textViewPeringkat.text = getString(R.string.peringkatPinjaman1)
             }
 
             btnKunjungan.setOnClickListener() {
@@ -257,7 +260,6 @@ class MainActivity : AppCompatActivity() {
                 btnPinjaman.setTextSize(TypedValue.COMPLEX_UNIT_PX,resources.getDimension(R.dimen.fourteen_sp))
                 btnKunjungan.setTextSize(TypedValue.COMPLEX_UNIT_PX,resources.getDimension(R.dimen.sixteen_sp))
                 textViewPinjaman.text = getString(R.string.peringkatKunjungan)
-                textViewPeringkat.text = getString(R.string.peringkatKunjungan1)
             }
 
         }
@@ -289,6 +291,7 @@ class MainActivity : AppCompatActivity() {
 
         }
     }
+
     fun showBook() {
         val lampiranBuku = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
         val bindingBuku = FragmentBukuLampiranBinding.inflate(layoutInflater)
@@ -306,7 +309,6 @@ class MainActivity : AppCompatActivity() {
             val btn_detailBuku = findViewById<Button>(R.id.btn_detail_buku)
             val btn_sinopsisBuku = findViewById<Button>(R.id.btn_sinopsis_buku)
             val underline_detailBuku = findViewById<View>(R.id.underlineBtn_buku_detail)
-            val underline_sinopsisBuku = findViewById<View>(R.id.underlineBtn_buku_sinopsis)
 
 
             val stub_detail_buku = findViewById<ViewStub>(R.id.stub_detail_buku)
@@ -321,7 +323,7 @@ class MainActivity : AppCompatActivity() {
                 btn_sinopsisBuku?.setTextColor(Color.parseColor("#80292929"))
                 val translationX = resources.getDimensionPixelSize(R.dimen.zero_dp).toFloat() // 75dp in pixels
                 val animator = ObjectAnimator.ofFloat(underline_detailBuku, "translationX", translationX)
-                animator.duration = 500 // 2 seconds
+                animator.duration = 200 // 2 seconds
                 animator.start()
 
                 removeLayout(inflatedView!!)
@@ -342,7 +344,7 @@ class MainActivity : AppCompatActivity() {
                 btn_sinopsisBuku?.setTextColor(Color.parseColor("#292929"))
                 val translationX = resources.getDimensionPixelSize(R.dimen.translation_distance).toFloat() // 75dp in pixels
                 val animator = ObjectAnimator.ofFloat(underline_detailBuku, "translationX", translationX)
-                animator.duration = 500 // 2 seconds
+                animator.duration = 200
                 animator.start()
 
                 removeLayout(inflatedView!!)
@@ -356,6 +358,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun showBottomSheet(){
 
         val sheetDialog = BottomSheetDialog(this)

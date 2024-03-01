@@ -6,6 +6,6 @@ import android.os.Bundle
 class GuestKontenBuku : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_guest_konten_buku)
+        setContentView(R.layout.fragment_konten_buku_terkini)
     }
 }
