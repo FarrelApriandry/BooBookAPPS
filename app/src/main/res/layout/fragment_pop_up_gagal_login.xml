@@ -41,7 +41,7 @@
             android:id="@+id/Text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Akun mu Telah Terdaftar"
+            android:text="Gagal Menghubungkan Akun!"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/poppins_medium"
             android:textColor="@color/black"
@@ -55,7 +55,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins"
-            android:text="Hai Pengguna Boobook, Terimakasih Telah Bergabung dengan Kami!"
+            android:text="Password yang Anda Masukkan Salah!/ Username Anda Salah!"
             android:textAlignment="center"
             android:textColor="@color/black50"
             android:textSize="12sp" />
@@ -64,7 +64,7 @@
             android:id="@+id/imageView4"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_greencheck"
+            android:src="@drawable/failed"
             android:layout_gravity="center|top"
             android:layout_marginTop="15dp"/>
 
@@ -84,9 +84,9 @@
             android:layout_gravity="center"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
-            android:text="Login"
+            android:text="Kembali ke Halaman Login"
             android:textColor="@color/linkText"
-            android:textSize="25sp" />
+            android:textSize="18sp" />
 
 
     </LinearLayout>
