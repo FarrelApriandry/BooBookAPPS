@@ -1,8 +1,10 @@
 package com.example.dntylancar
 
 import android.animation.ObjectAnimator
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
@@ -14,17 +16,23 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
-import com.smarteist.autoimageslider.SliderView
-import com.example.dntylancar.databinding.FragmentPopUpReportBinding
 import com.example.dntylancar.databinding.FragmentBukuLampiranBinding
+import com.example.dntylancar.databinding.FragmentPopUpReportBinding
+import com.example.dntylancar.databinding.FragmentRatingPlaystoreBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.smarteist.autoimageslider.SliderView
+import java.util.Timer
+import kotlin.concurrent.schedule
+import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
+    var PV_link = PublicVariable().link
     var currentLayout: View? = null
     var stub_buku: View? =  null
-    var isLogin: Boolean = false
+    var PV_isLogin = PublicVariable().isLogin
+    public var bottoMsg: Dialog? = null
 
     fun removeLayout(view: View) {
         if (view.parent != null) {
@@ -87,7 +95,7 @@ class MainActivity : AppCompatActivity() {
             showBook()
         }
 
-        if (isLogin == true) {
+        if (PV_isLogin == true) {
             println("logged in")
         } else {
             println("not logged in")
@@ -288,6 +296,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showBook() {
+
         val lampiranBuku = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
         val bindingBuku = FragmentBukuLampiranBinding.inflate(layoutInflater)
         lampiranBuku.apply {
@@ -354,6 +363,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun webConnection() {
+        val intent = Intent()
+        intent.setAction(Intent.ACTION_VIEW)
+        intent.addCategory(Intent.CATEGORY_BROWSABLE)
+        intent.setData(Uri.parse(PV_link))
+        startActivity(intent)
+    }
+
+    fun dismissLink() {
+        PV_link = null
+    }
+
     private fun showBottomSheet(){
 
         val sheetDialog = BottomSheetDialog(this)
@@ -362,11 +383,56 @@ class MainActivity : AppCompatActivity() {
         sheetDialog.apply {
             setContentView(sheetBinding.root)
             show()
+            bottoMsg = sheetDialog
         }
         sheetBinding.btnSendReport.setOnClickListener{
-            sheetDialog.dismiss()
+            showFragmentRating()
         }
     }
 
+    private fun showFragmentRating() {
 
+        val sheetRating = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
+        val bindingRating =  FragmentRatingPlaystoreBinding.inflate(layoutInflater)
+
+        sheetRating.apply {
+            if (bottoMsg == null) {
+
+            } else {
+                (bottoMsg!!).dismiss()
+            }
+            setContentView(bindingRating.root)
+            val mainConstraint = bindingRating.mainConstraint
+            val h = mainConstraint.maxHeight
+            val bottomSheetBehavior = BottomSheetBehavior.from(bindingRating.root.parent as View)
+            bottomSheetBehavior.peekHeight = h
+            bottoMsg = sheetRating
+            show()
+
+            bindingRating.btnRatingPlaystore.setOnClickListener() {
+
+
+                PV_link = "https://www.instagram.com/frlapri/"
+                webConnection()
+
+                if (bottoMsg == null) {
+
+                } else {
+                    (bottoMsg!!).dismiss()
+                }
+
+                Timer().schedule(10000) {
+                    dismissLink()
+                }
+            }
+
+            bindingRating.btnKembali.setOnClickListener() {
+                if (bottoMsg == null) {
+
+                } else {
+                    (bottoMsg!!).dismiss()
+                }
+            }
+        }
+    }
 }

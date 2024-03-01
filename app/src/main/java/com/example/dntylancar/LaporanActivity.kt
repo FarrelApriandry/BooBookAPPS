@@ -3,12 +3,12 @@ package com.example.dntylancar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.dntylancar.databinding.ActivityLaporanBinding
-import com.example.dntylancar.databinding.ActivityPopUpReportBinding
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.example.dntylancar.databinding.FragmentLaporanBinding
+//import com.example.dntylancar.databinding.FragmentPopUpReportBindingn
+//import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class LaporanActivity : AppCompatActivity() {
-    private val binding by lazy { ActivityLaporanBinding.inflate(layoutInflater)}
+    private val binding by lazy { FragmentLaporanBinding.inflate(layoutInflater)}
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

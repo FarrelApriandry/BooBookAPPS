@@ -4,23 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SendReportActivity">
+    tools:context=".SendReportActivity"
+    android:id="@+id/mainConstraint">
 
     <LinearLayout
         android:layout_width="364dp"
         android:layout_height="325dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="268dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="305dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginBottom="500dp"
         android:background="@drawable/rounded_send_report"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <LinearLayout
@@ -42,12 +39,12 @@
             android:id="@+id/Text1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Terimakasih Atas MasukanMu!"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
             android:fontFamily="@font/poppins_medium"
+            android:text="Terimakasih Atas MasukanMu!"
             android:textColor="@color/black"
-            android:textSize="18sp"
-            android:layout_marginTop="18dp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/Text2"
@@ -58,43 +55,47 @@
             android:fontFamily="@font/poppins"
             android:text="Hai pengguna Boobook, ini sudah saatnya untuk kamu memberikan rating Boobook untuk pengguna lain!"
             android:textAlignment="center"
-            android:textColor="@color/black50"
+            android:textColor="@color/linkText"
             android:textSize="12sp" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="19dp"
             android:layout_marginRight="0dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="0dp"
             android:background="@android:color/darker_gray" />
-        <TextView
-            android:id="@+id/rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rating BooBook!"
-            android:layout_gravity="center_horizontal"
+
+        <Button
+            android:id="@+id/btn_rating_playstore"
+            android:layout_width="364dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="0dp"
+            android:background="@null"
             android:fontFamily="@font/poppins_medium"
+            android:text="Rating BooBook!"
+            android:textAllCaps="false"
             android:textColor="@color/linkText"
-            android:textSize="18sp"
-            android:layout_marginTop="13dp"/>
+            android:textSize="18sp" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="0dp"
-            android:layout_marginTop="13dp"
             android:layout_marginRight="0dp"
-            android:layout_marginBottom="2dp"
+            android:layout_marginBottom="0dp"
             android:background="@android:color/darker_gray" />
 
-        <TextView
-            android:id="@+id/unrating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
+        <Button
+            android:id="@+id/btn_kembali"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="0dp"
+            android:background="@null"
             android:fontFamily="@font/poppins_medium"
             android:text="Nanti Saja"
+            android:textAllCaps="false"
             android:textColor="@color/linkText"
             android:textSize="18sp" />
 
