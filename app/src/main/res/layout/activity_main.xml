@@ -11,7 +11,7 @@
 
     <include
         android:id="@+id/include2"
-        layout="@layout/activity_bottom_navbar"
+        layout="@layout/fragment_bottom_navbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,7 +20,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/activity_header_navbar"
+        layout="@layout/fragment_header_navbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

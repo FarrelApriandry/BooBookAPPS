@@ -6,6 +6,6 @@ import android.os.Bundle
 class SendReportActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_send_report)
+        setContentView(R.layout.fragment_send_report)
     }
 }

@@ -27,7 +27,7 @@ class SliderAdapter(imageUrl: ArrayList<String>) :
     override fun onCreateViewHolder(parent: ViewGroup?): SliderAdapter.SliderViewHolder {
         // inside this method we are inflating our layout file for our slider view.
         val inflate: View =
-            LayoutInflater.from(parent!!.context).inflate(R.layout.activity_slider_banner, null)
+            LayoutInflater.from(parent!!.context).inflate(R.layout.fragment_slider_banner, null)
 
         // on below line we are simply passing
         // the view to our slider view holder.

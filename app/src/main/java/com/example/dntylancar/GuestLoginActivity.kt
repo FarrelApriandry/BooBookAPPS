@@ -14,8 +14,6 @@ import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import android.accounts.AccountManager
-import android.accounts.AccountManagerCallback
-import android.accounts.AccountManagerFuture
 import android.util.Log
 
 class GuestLoginActivity : AppCompatActivity() {
@@ -137,7 +135,7 @@ class GuestLoginActivity : AppCompatActivity() {
     private fun showCustomDialog() {
         val dialog = BottomSheetDialog(this)
         val root = findViewById<ConstraintLayout>(R.id.popUpLogin)
-        val view = layoutInflater.inflate(R.layout.activity_pop_up_login_action, root )
+        val view = layoutInflater.inflate(R.layout.fragment_pop_up_login_action, root )
         val btnCLose = view.findViewById<Button>(R.id.btn_close_card)
         val btnLogEmail = view.findViewById<ImageButton>(R.id.btn_auth_log_email)
         val btnLogGoogle =  view.findViewById<ImageButton>(R.id.btn_auth_log_google)

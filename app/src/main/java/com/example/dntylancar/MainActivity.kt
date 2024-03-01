@@ -15,7 +15,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
 import com.smarteist.autoimageslider.SliderView
-import com.example.dntylancar.databinding.ActivityPopUpReportBinding
 import com.example.dntylancar.databinding.FragmentBukuLampiranBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -52,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val stub = findViewById<ViewStub>(R.id.layout_stub)
-        stub.layoutResource = R.layout.activity_halaman_utama
+        stub.layoutResource = R.layout.fragment_halaman_utama
         val inflated = stub.inflate()
         currentLayout = inflated
 
@@ -108,7 +107,7 @@ class MainActivity : AppCompatActivity() {
 
             // Inflate the new layout
             val inflater = layoutInflater
-            val layout = inflater.inflate(R.layout.activity_halaman_utama, null, false)
+            val layout = inflater.inflate(R.layout.fragment_halaman_utama, null, false)
 
             // Add the inflated layout to the parent view
             val parentView = findViewById<ViewGroup>(R.id.parent_stub) // Replace with the actual ID of the parent view
@@ -156,7 +155,7 @@ class MainActivity : AppCompatActivity() {
 
             // Inflate the new layout
             val inflater = layoutInflater
-            val layout = inflater.inflate(R.layout.activity_koleksi, null, false)
+            val layout = inflater.inflate(R.layout.fragment_koleksi, null, false)
 
             // Add the inflated layout to the parent view
             val parentView = findViewById<ViewGroup>(R.id.parent_stub) // Replace with the actual ID of the parent view
@@ -226,7 +225,7 @@ class MainActivity : AppCompatActivity() {
             removeLayout(stub_buku!!)
 
             val inflater = layoutInflater
-            val layout = inflater.inflate(R.layout.activity_peringkat, null, false)
+            val layout = inflater.inflate(R.layout.fragment_peringkat, null, false)
 
             val parentView = findViewById<ViewGroup>(R.id.parent_stub)
             parentView.addView(layout)
@@ -275,7 +274,7 @@ class MainActivity : AppCompatActivity() {
 
             // Inflate the new layout
             val inflater = layoutInflater
-            val layout = inflater.inflate(R.layout.activity_laporan, null, false)
+            val layout = inflater.inflate(R.layout.fragment_laporan, null, false)
 
             // Add the inflated layout to the parent view
             val parentView = findViewById<ViewGroup>(R.id.parent_stub) // Replace with the actual ID of the parent view
