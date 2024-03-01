@@ -31,11 +31,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun removeStub(view: View) {
-        val parent = view.parent as ViewGroup
-        parent.removeView(view)
-    }
-
     lateinit var imageUrl: ArrayList<String>
     lateinit var sliderView: SliderView
     lateinit var sliderAdapter: SliderAdapter
