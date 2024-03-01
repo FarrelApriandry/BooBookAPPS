@@ -13,4 +13,6 @@
     <color name="TRANSPARENT">#00000000</color>
     <color name="black50">#80000000</color>
     <color name="twentynine30">#4D292929</color>
+    <color name="red_failed">#FF3535</color>
+    <color name="green_succes">#51D05D</color>
 </resources>

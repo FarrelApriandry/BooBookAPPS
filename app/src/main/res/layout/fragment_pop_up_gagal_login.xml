@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="364dp"
-        android:layout_height="400dp"
+        android:layout_height="280dp"
         android:layout_marginStart="26dp"
         android:layout_marginTop="268dp"
         android:layout_marginEnd="21dp"
@@ -26,15 +26,15 @@
             android:id="@+id/logobar"
             android:layout_width="364dp"
             android:layout_height="100dp"
-            android:background="@drawable/rounded_send_report2"
+            android:background="@drawable/rounded_failed_login"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/boobookwhite" />
+                android:src="@drawable/failed_x" />
         </LinearLayout>
 
         <TextView
@@ -50,23 +50,15 @@
 
         <TextView
             android:id="@+id/Text2"
-            android:layout_width="wrap_content"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins"
-            android:text="Password yang Anda Masukkan Salah!/ Username Anda Salah!"
+            android:text="Email atau Password yang anda masukkan salah silahkan coba lagi"
             android:textAlignment="center"
             android:textColor="@color/black50"
             android:textSize="12sp" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/failed"
-            android:layout_gravity="center|top"
-            android:layout_marginTop="15dp"/>
 
         <View
             android:layout_width="match_parent"
@@ -84,7 +76,7 @@
             android:layout_gravity="center"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
-            android:text="Kembali ke Halaman Login"
+            android:text="Kembali"
             android:textColor="@color/linkText"
             android:textSize="18sp" />
 
