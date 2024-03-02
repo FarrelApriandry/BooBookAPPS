@@ -6,11 +6,11 @@
         <item name="android:windowActionBar">false</item>
         <item name="android:windowIsFloating">false</item>
     </style>
-    <style name="CustomBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+    <style name="customBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/customBottomSheetStyle</item>
     </style>
 
-    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+    <style name="customBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@color/TRANSPARENT</item>
     </style>
 

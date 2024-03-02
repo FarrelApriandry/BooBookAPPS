@@ -24,7 +24,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.smarteist.autoimageslider.SliderView
 import java.util.Timer
 import kotlin.concurrent.schedule
-import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     var currentLayout: View? = null
     var stub_buku: View? =  null
     var PV_isLogin = PublicVariable().isLogin
-    public var bottoMsg: Dialog? = null
+    var PV_bottoMsg = PublicVariable().bottoMsg
 
     fun removeLayout(view: View) {
         if (view.parent != null) {
@@ -289,7 +288,7 @@ class MainActivity : AppCompatActivity() {
             val btnAddReport = findViewById<ImageButton>(R.id.btn_add_report)
 
             btnAddReport.setOnClickListener {
-                showBottomSheet()
+                showFragmentReport()
             }
 
         }
@@ -297,7 +296,7 @@ class MainActivity : AppCompatActivity() {
 
     fun showBook() {
 
-        val lampiranBuku = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
+        val lampiranBuku = BottomSheetDialog(this, R.style.customBottomSheetDialogTheme)
         val bindingBuku = FragmentBukuLampiranBinding.inflate(layoutInflater)
         lampiranBuku.apply {
 
@@ -335,7 +334,7 @@ class MainActivity : AppCompatActivity() {
                 val inflated_f_detailBuku = layoutInflater
                 val stub_detailBuku = inflated_f_detailBuku.inflate(R.layout.fragment_detail_buku, null, false)
 
-                val parent_stubDetailBuku = findViewById<ViewGroup>(R.id.parent_stub_detail_buku) // Replace with the actual ID of the parent view
+                val parent_stubDetailBuku = findViewById<ViewGroup>(R.id.parent_stub_detail_buku)
                 parent_stubDetailBuku?.addView(stub_detailBuku)
                 inflatedView = stub_detailBuku
 
@@ -356,7 +355,7 @@ class MainActivity : AppCompatActivity() {
                 val inflated_f_detailBuku = layoutInflater
                 val stub_detailBuku = inflated_f_detailBuku.inflate(R.layout.fragment_sinopsis_buku, null, false)
 
-                val parent_stubDetailBuku = findViewById<ViewGroup>(R.id.parent_stub_detail_buku) // Replace with the actual ID of the parent view
+                val parent_stubDetailBuku = findViewById<ViewGroup>(R.id.parent_stub_detail_buku)
                 parent_stubDetailBuku?.addView(stub_detailBuku)
                 inflatedView = stub_detailBuku
             }
@@ -375,7 +374,7 @@ class MainActivity : AppCompatActivity() {
         PV_link = null
     }
 
-    private fun showBottomSheet(){
+    private fun showFragmentReport(){
 
         val sheetDialog = BottomSheetDialog(this)
         val sheetBinding = FragmentPopUpReportBinding.inflate(layoutInflater)
@@ -383,7 +382,7 @@ class MainActivity : AppCompatActivity() {
         sheetDialog.apply {
             setContentView(sheetBinding.root)
             show()
-            bottoMsg = sheetDialog
+            PV_bottoMsg = sheetDialog
         }
         sheetBinding.btnSendReport.setOnClickListener{
             showFragmentRating()
@@ -392,21 +391,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFragmentRating() {
 
-        val sheetRating = BottomSheetDialog(this, R.style.CustomBottomSheetDialogTheme)
+        val sheetRating = BottomSheetDialog(this, R.style.customBottomSheetDialogTheme)
         val bindingRating =  FragmentRatingPlaystoreBinding.inflate(layoutInflater)
 
         sheetRating.apply {
-            if (bottoMsg == null) {
+            if (PV_bottoMsg == null) {
 
             } else {
-                (bottoMsg!!).dismiss()
+                (PV_bottoMsg!!).dismiss()
             }
             setContentView(bindingRating.root)
             val mainConstraint = bindingRating.mainConstraint
             val h = mainConstraint.maxHeight
             val bottomSheetBehavior = BottomSheetBehavior.from(bindingRating.root.parent as View)
             bottomSheetBehavior.peekHeight = h
-            bottoMsg = sheetRating
+            PV_bottoMsg = sheetRating
             show()
 
             bindingRating.btnRatingPlaystore.setOnClickListener() {
@@ -415,10 +414,10 @@ class MainActivity : AppCompatActivity() {
                 PV_link = "https://www.instagram.com/frlapri/"
                 webConnection()
 
-                if (bottoMsg == null) {
+                if (PV_bottoMsg == null) {
 
                 } else {
-                    (bottoMsg!!).dismiss()
+                    (PV_bottoMsg!!).dismiss()
                 }
 
                 Timer().schedule(10000) {
@@ -427,10 +426,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             bindingRating.btnKembali.setOnClickListener() {
-                if (bottoMsg == null) {
+                if (PV_bottoMsg == null) {
 
                 } else {
-                    (bottoMsg!!).dismiss()
+                    (PV_bottoMsg!!).dismiss()
                 }
             }
         }

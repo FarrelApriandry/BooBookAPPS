@@ -103,7 +103,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText_email"
+            android:id="@+id/inputTxt_email"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -134,7 +134,7 @@
         >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textInputEditText_password"
+            android:id="@+id/inputTxt_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"

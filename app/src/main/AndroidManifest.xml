@@ -26,9 +26,6 @@
             android:name=".BukuActivityLampiran"
             android:exported="false" />
         <activity
-            android:name=".PopUpBookActivity"
-            android:exported="false" />
-        <activity
             android:name=".GuestKontenBuku"
             android:exported="false" />
         <activity

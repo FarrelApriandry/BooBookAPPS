@@ -78,7 +78,7 @@
             android:background="@android:color/darker_gray" />
 
         <TextView
-            android:id="@+id/Login"
+            android:id="@+id/btn_kembali"
             android:layout_width="364dp"
             android:layout_height="73dp"
             android:layout_gravity="center"

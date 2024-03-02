@@ -34,7 +34,7 @@ class PopUpGagalLoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pop_up_gagal_login, container, false)
+        return inflater.inflate(R.layout.fragment_pop_up_login_gagal, container, false)
     }
 
     companion object {
