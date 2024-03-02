@@ -17,9 +17,7 @@ import kotlin.concurrent.schedule
 
 class LoginActivity : AppCompatActivity() {
 
-    var PV_isLogin = PublicVariable().isLogin
-    var PV_bottoMsg = PublicVariable().bottoMsg
-
+    val publicVariable = PublicVariable.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,14 +33,14 @@ class LoginActivity : AppCompatActivity() {
             val txtInput: String = emailInput.text.toString() + passInput.text.toString()
 
             if (txtInput.trim().length<1) {
-                PV_isLogin = false
+                publicVariable.isLogin = false
                 popUpFragmentLoginSuccess()
             } else {
-                PV_isLogin = true
+                publicVariable.isLogin = true
                 popUpFragmentLoginSuccess()
             }
 
-            if (PV_isLogin == true) {
+            if (publicVariable.isLogin == true) {
                 println("is Login")
             } else {
                 println("not logged in")
@@ -55,31 +53,33 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun popUpFragmentLoginSuccess() {
+    private fun popUpFragmentLoginSuccess() {
         val sheetLoginSuccess = BottomSheetDialog(this, R.style.customBottomSheetDialogTheme)
         val bindingSheetLoginSuccess = FragmentPopUpLoginBerhasilBinding.inflate(layoutInflater)
         val bindingSheetLoginFailed = FragmentPopUpLoginGagalBinding.inflate(layoutInflater)
 
         sheetLoginSuccess.apply {
-            if (PV_isLogin == true) {
+            if (publicVariable.isLogin == true) {
+
                 setContentView(bindingSheetLoginSuccess.root)
                 val mainConstraint = bindingSheetLoginSuccess.mainConstraint
                 val h = mainConstraint.maxHeight
                 val bottomSheetBehavior = BottomSheetBehavior.from(bindingSheetLoginSuccess.root.parent as View)
                 bottomSheetBehavior.peekHeight = h
-                PV_bottoMsg = sheetLoginSuccess
+                publicVariable.bottoMsg = sheetLoginSuccess
                 show()
-                Timer().schedule(5000) {
+                Timer().schedule(3000) {
+                    (publicVariable.bottoMsg)?.dismiss()
+                    publicVariable.bottoMsg = null
                     startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 }
-
             } else {
                 setContentView(bindingSheetLoginFailed.root)
                 val mainConstraint = bindingSheetLoginFailed.mainConstraint
                 val h = mainConstraint.maxHeight
                 val bottomSheetBehavior = BottomSheetBehavior.from(bindingSheetLoginFailed.root.parent as View)
                 bottomSheetBehavior.peekHeight = h
-                PV_bottoMsg = sheetLoginSuccess
+                publicVariable.bottoMsg = sheetLoginSuccess
                 show()
                 bindingSheetLoginFailed.btnKembali.setOnClickListener() {
                     run {

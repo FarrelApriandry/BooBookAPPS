@@ -27,11 +27,11 @@ import kotlin.concurrent.schedule
 
 class MainActivity : AppCompatActivity() {
 
-    var PV_link = PublicVariable().link
+    val publicVariable = PublicVariable.getInstance()
+
+//    var PV_link = publicVariable.link
     var currentLayout: View? = null
     var stub_buku: View? =  null
-    var PV_isLogin = PublicVariable().isLogin
-    var PV_bottoMsg = PublicVariable().bottoMsg
 
     fun removeLayout(view: View) {
         if (view.parent != null) {
@@ -94,10 +94,16 @@ class MainActivity : AppCompatActivity() {
             showBook()
         }
 
-        if (PV_isLogin == true) {
+        if (publicVariable.isLogin == true) {
             println("logged in")
         } else {
             println("not logged in")
+        }
+
+        if (publicVariable.bottoMsg == null) {
+            println("null")
+        } else {
+            println("contain item")
         }
 
         btnHomeActive.setOnClickListener(){
@@ -366,12 +372,12 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent()
         intent.setAction(Intent.ACTION_VIEW)
         intent.addCategory(Intent.CATEGORY_BROWSABLE)
-        intent.setData(Uri.parse(PV_link))
+        intent.setData(Uri.parse(publicVariable.link))
         startActivity(intent)
     }
 
     fun dismissLink() {
-        PV_link = null
+        publicVariable.link = null
     }
 
     private fun showFragmentReport(){
@@ -382,7 +388,7 @@ class MainActivity : AppCompatActivity() {
         sheetDialog.apply {
             setContentView(sheetBinding.root)
             show()
-            PV_bottoMsg = sheetDialog
+            publicVariable.bottoMsg = sheetDialog
         }
         sheetBinding.btnSendReport.setOnClickListener{
             showFragmentRating()
@@ -395,29 +401,31 @@ class MainActivity : AppCompatActivity() {
         val bindingRating =  FragmentRatingPlaystoreBinding.inflate(layoutInflater)
 
         sheetRating.apply {
-            if (PV_bottoMsg == null) {
+            if (publicVariable.bottoMsg == null) {
 
             } else {
-                (PV_bottoMsg!!).dismiss()
+                (publicVariable.bottoMsg!!).dismiss()
+                publicVariable.bottoMsg = null
             }
             setContentView(bindingRating.root)
             val mainConstraint = bindingRating.mainConstraint
             val h = mainConstraint.maxHeight
             val bottomSheetBehavior = BottomSheetBehavior.from(bindingRating.root.parent as View)
             bottomSheetBehavior.peekHeight = h
-            PV_bottoMsg = sheetRating
+            publicVariable.bottoMsg = sheetRating
             show()
 
             bindingRating.btnRatingPlaystore.setOnClickListener() {
 
 
-                PV_link = "https://www.instagram.com/frlapri/"
+                publicVariable.link = "https://www.instagram.com/frlapri/"
                 webConnection()
 
-                if (PV_bottoMsg == null) {
+                if (publicVariable.bottoMsg == null) {
 
                 } else {
-                    (PV_bottoMsg!!).dismiss()
+                    (publicVariable.bottoMsg!!).dismiss()
+                    publicVariable.bottoMsg = null
                 }
 
                 Timer().schedule(10000) {
@@ -426,10 +434,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             bindingRating.btnKembali.setOnClickListener() {
-                if (PV_bottoMsg == null) {
+                if (publicVariable.bottoMsg == null) {
 
                 } else {
-                    (PV_bottoMsg!!).dismiss()
+                    (publicVariable.bottoMsg!!).dismiss()
+                    publicVariable.bottoMsg = null
                 }
             }
         }

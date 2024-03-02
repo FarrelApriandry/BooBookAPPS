@@ -3,10 +3,19 @@ package com.example.dntylancar
 import android.app.Dialog
 import android.view.View
 
-class PublicVariable {
+class PublicVariable private constructor(){
 
-    public  var link: String? = null
-    public var isLogin: Boolean = false
-    public var bottoMsg: Dialog? = null
+    companion object{
 
+        private var instance: PublicVariable? = null
+        fun getInstance(): PublicVariable {
+            return instance ?: synchronized(this) {
+                instance ?: PublicVariable().also { instance = it }
+            }
+        }
+    }
+
+    var link: String? = null
+    var isLogin: Boolean = false
+    var bottoMsg: Dialog? = null
 }
