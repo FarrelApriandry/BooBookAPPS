@@ -13,6 +13,7 @@ class PublicVariable private constructor(){
                 instance ?: PublicVariable().also { instance = it }
             }
         }
+
     }
 
     var link: String? = null

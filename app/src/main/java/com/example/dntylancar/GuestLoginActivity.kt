@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import android.accounts.AccountManager
 import android.util.Log
+import android.view.View
 
 class GuestLoginActivity : AppCompatActivity() {
 
@@ -27,10 +28,10 @@ class GuestLoginActivity : AppCompatActivity() {
         val btnBack = findViewById<ImageButton>(R.id.btn_backHome)
 
         btnBack.setOnClickListener() {
-                run {
-                onBackPressed()
-            }
+            PublicFunction.btnBack(this)
         }
+
+        PublicFunction.initializeMediaPlayer(this)
 
         val showPopUpButton = findViewById<ImageButton>(R.id.btn_login_boins)
         val showPopUpButton2 = findViewById<Button>(R.id.btn_login_boins2)
@@ -40,11 +41,10 @@ class GuestLoginActivity : AppCompatActivity() {
         val showPopUpButton6 = findViewById<Button>(R.id.btn_login_boins6)
         val showPopUpButton7 = findViewById<Button>(R.id.btn_login_boins7)
         val v = getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        mediaPlayer = MediaPlayer.create(this, R.raw.sfx_btn_click)
 
         showPopUpButton.setOnClickListener(){
-            playSound()
-            showCustomDialog()
+            PublicFunction.playSound()
+            PublicFunction.PopUpFragmentLogin(this, layoutInflater)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 v.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE))
             } else {
@@ -52,8 +52,8 @@ class GuestLoginActivity : AppCompatActivity() {
             }
         }
         showPopUpButton2.setOnClickListener(){
-            playSound()
-            showCustomDialog()
+            PublicFunction.playSound()
+            PublicFunction.PopUpFragmentLogin(this, layoutInflater)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 v.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE))
             } else {
@@ -61,8 +61,8 @@ class GuestLoginActivity : AppCompatActivity() {
             }
         }
         showPopUpButton3.setOnClickListener(){
-            playSound()
-            showCustomDialog()
+            PublicFunction.playSound()
+            PublicFunction.PopUpFragmentLogin(this, layoutInflater)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 v.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE))
             } else {
@@ -70,8 +70,8 @@ class GuestLoginActivity : AppCompatActivity() {
             }
         }
         showPopUpButton4.setOnClickListener(){
-            playSound()
-            showCustomDialog()
+            PublicFunction.playSound()
+            PublicFunction.PopUpFragmentLogin(this, layoutInflater)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 v.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE))
             } else {
@@ -79,8 +79,8 @@ class GuestLoginActivity : AppCompatActivity() {
             }
         }
         showPopUpButton5.setOnClickListener(){
-            playSound()
-            showCustomDialog()
+            PublicFunction.playSound()
+            PublicFunction.PopUpFragmentLogin(this, layoutInflater)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 v.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE))
             } else {
@@ -88,8 +88,8 @@ class GuestLoginActivity : AppCompatActivity() {
             }
         }
         showPopUpButton6.setOnClickListener(){
-            playSound()
-            showCustomDialog()
+            PublicFunction.playSound()
+            PublicFunction.PopUpFragmentLogin(this, layoutInflater)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 v.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE))
             } else {
@@ -97,74 +97,18 @@ class GuestLoginActivity : AppCompatActivity() {
             }
         }
         showPopUpButton7.setOnClickListener(){
-            playSound()
-            showCustomDialog()
+            PublicFunction.playSound()
+            PublicFunction.PopUpFragmentLogin(this, layoutInflater)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 v.vibrate(VibrationEffect.createOneShot(10, VibrationEffect.DEFAULT_AMPLITUDE))
             } else {
                 v.vibrate(10)
             }
         }
-
-    }
-
-    private fun playSound() {
-        if (!mediaPlayer.isPlaying) {
-            mediaPlayer.start()
-        }
     }
 
     override fun onStop() {
         super.onStop()
-        if (mediaPlayer.isPlaying) {
-            mediaPlayer.release()
-        }
-    }
-
-    fun openGoogleAccountPicker() {
-        val accountManager = AccountManager.get(this)
-        val intent = AccountManager.newChooseAccountIntent(null, null,
-            arrayOf("com.google"), false, null, null, null, null)
-        startActivityForResult(intent, REQUEST_CODE_GOOGLE_ACCOUNT_PICKER)
-    }
-
-    companion object {
-        const val REQUEST_CODE_GOOGLE_ACCOUNT_PICKER = 100
-    }
-
-    private fun showCustomDialog() {
-        val dialog = BottomSheetDialog(this)
-        val root = findViewById<ConstraintLayout>(R.id.popUpLogin)
-        val view = layoutInflater.inflate(R.layout.fragment_pop_up_login_action, root )
-        val btnCLose = view.findViewById<Button>(R.id.btn_close_card)
-        val btnLogEmail = view.findViewById<ImageButton>(R.id.btn_auth_log_email)
-        val btnLogGoogle =  view.findViewById<ImageButton>(R.id.btn_auth_log_google)
-        dialog.setCancelable(true)
-        dialog.setContentView(view)
-        dialog.show()
-
-        btnLogGoogle.setOnClickListener() {
-            openGoogleAccountPicker()
-        }
-
-        btnLogEmail.setOnClickListener() {
-            startActivity(Intent(this@GuestLoginActivity, LoginActivity::class.java))
-        }
-
-        btnCLose.setOnClickListener {
-            dialog.dismiss()
-        }
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_GOOGLE_ACCOUNT_PICKER) {
-            if (resultCode == RESULT_OK) {
-                if (data != null) {
-                    val account = data.getParcelableExtra<Account>(AccountManager.KEY_ACCOUNT_NAME)
-                    Log.d("GoogleAccountPicker", "Account selected: $account")
-                }
-                // Account selected, do something with it Log.d("GoogleAccountPicker", "Account selected: $account") } } } super.onActivityResult(requestCode, resultCode, intent)
-            }
-        }
+        PublicFunction.onStop(this)
     }
 }

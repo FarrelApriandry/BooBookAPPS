@@ -100,12 +100,6 @@ class MainActivity : AppCompatActivity() {
             println("not logged in")
         }
 
-        if (publicVariable.bottoMsg == null) {
-            println("null")
-        } else {
-            println("contain item")
-        }
-
         btnHomeActive.setOnClickListener(){
             btnHomeActive.setImageResource(R.drawable.ic_homepage_active)
             btnKoleksiActive.setImageResource(R.drawable.ic_library_inactive)
@@ -385,13 +379,18 @@ class MainActivity : AppCompatActivity() {
         val sheetDialog = BottomSheetDialog(this)
         val sheetBinding = FragmentPopUpReportBinding.inflate(layoutInflater)
         val layoutParams = ViewGroup.LayoutParams(200, 200)
-        sheetDialog.apply {
-            setContentView(sheetBinding.root)
-            show()
-            publicVariable.bottoMsg = sheetDialog
-        }
-        sheetBinding.btnSendReport.setOnClickListener{
-            showFragmentRating()
+
+        if (publicVariable.isLogin == true) {
+            sheetDialog.apply {
+                setContentView(sheetBinding.root)
+                show()
+                publicVariable.bottoMsg = sheetDialog
+            }
+            sheetBinding.btnSendReport.setOnClickListener{
+                showFragmentRating()
+            }
+        } else {
+
         }
     }
 
