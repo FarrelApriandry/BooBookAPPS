@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfileFragment">
+
+    <LinearLayout
+        android:layout_width="370dp"
+        android:layout_height="494dp"
+        android:layout_gravity="center|top"
+        android:background="@drawable/rounded_edit"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewEditProfile"
+                android:layout_width="114dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="122dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Edit Profile"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/imageViewEdit"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/bx_edit" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:background="@drawable/rounded_gray"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewEditNama"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="37dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Nama"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textViewNoAnggota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="33dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="No. Anggota"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textViewKelas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="33dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Kelas"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textViewFotoProfile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="33dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Foto Profile"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="10dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewTitik"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="37dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text=":"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textViewTitik2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="33dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text=":"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textViewTitik3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="33dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text=":"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/textViewTitik4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="33dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text=":"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/EditNamaAnggota"
+                    android:layout_width="226dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="37dp"
+                    android:background="@drawable/rounded_edit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="213dp"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="8dp"
+                        android:hint="isi di sini" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/NoAnggota"
+                    android:layout_width="226dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_edit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="213dp"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="8dp"
+                        android:hint="isi di sini" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/EditKelas"
+                    android:layout_width="226dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_edit">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="213dp"
+                        android:layout_height="10dp"
+                        android:layout_marginStart="8dp"
+                        android:hint="isi di sini" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/select"
+                    android:layout_width="101dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/rounded_profile"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Pilih Gambar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="151dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_profile"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Simpan Perubahan"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
+
+
+    </LinearLayout>
+</FrameLayout>
