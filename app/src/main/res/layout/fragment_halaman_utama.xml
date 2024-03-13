@@ -8,53 +8,75 @@
     android:layout_height="wrap_content"
     android:background="@null">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="22dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:clipToPadding="true"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slider">
+        app:layout_constraintTop_toBottomOf="@+id/scrollKategori">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical">
 
-            <ViewStub
-                android:id="@+id/stub_guest_konten_buku"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content">
+
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/slider"
+                    android:layout_width="0dp"
+                    android:layout_height="227dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="21dp"
+                    android:layout_marginEnd="22dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:sliderAnimationDuration="1000"
+                    app:sliderAutoCycleDirection="back_and_forth"
+                    app:sliderScrollTimeInSec="15" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="22dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/slider">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView_buku"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:clipChildren="true"
+                        android:clipToPadding="true"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.smarteist.autoimageslider.SliderView
-        android:id="@+id/slider"
-        android:layout_width="0dp"
-        android:layout_height="227dp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="22dp"
-        android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
-        app:sliderAnimationDuration="1000"
-        app:sliderAutoCycleDirection="back_and_forth"
-        app:sliderScrollTimeInSec="15" />
+    </ScrollView>
 
     <HorizontalScrollView
-        android:id="@+id/horizontalScrollView"
+        android:id="@+id/scrollKategori"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:fadeScrollbars="false"
         android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,6 +86,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:gravity="center|clip_vertical"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"

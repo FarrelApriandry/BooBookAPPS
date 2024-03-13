@@ -5,8 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@null"
-    android:id="@+id/mainConstraint"
-    tools:context=".BukuActivityLampiran">
+    android:id="@+id/mainConstraint">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
@@ -24,7 +23,7 @@
             android:id="@+id/cover_buku"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/example_book_1"
+            android:background="@drawable/dummy_book_1"
             android:scaleX="1"
             android:scaleY="1"
             app:layout_constraintBottom_toBottomOf="parent"

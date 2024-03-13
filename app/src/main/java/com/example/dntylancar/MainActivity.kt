@@ -2,6 +2,7 @@ package com.example.dntylancar
 
 import android.animation.ObjectAnimator
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
@@ -13,11 +14,19 @@ import android.view.ViewGroup
 import android.view.ViewStub
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.HorizontalScrollView
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isInvisible
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.dntylancar.databinding.FragmentBukuLampiranBinding
 import com.example.dntylancar.databinding.FragmentPopUpReportBinding
 import com.example.dntylancar.databinding.FragmentRatingPlaystoreBinding
@@ -27,7 +36,6 @@ import com.smarteist.autoimageslider.SliderView
 import java.util.Timer
 import kotlin.concurrent.schedule
 
-@Suppress("NAME_SHADOWING")
 class MainActivity : AppCompatActivity() {
 
     val publicVariable = PublicVariable.getInstance()
@@ -45,6 +53,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var imageUrl: ArrayList<String>
     lateinit var sliderView: SliderView
     lateinit var sliderAdapter: SliderAdapter
+    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -56,15 +65,15 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this@MainActivity, GuestLoginActivity::class.java))
         }
 
-        val stub = findViewById<ViewStub>(R.id.layout_stub)
-        stub.layoutResource = R.layout.fragment_halaman_utama
-        val inflated = stub.inflate()
-        currentLayout = inflated
-
         val btnHomeActive = findViewById<ImageButton>(R.id.btn_homepage)
         val btnKoleksiActive = findViewById<ImageButton>(R.id.btn_koleksi)
         val btnPeringkatActive = findViewById<ImageButton>(R.id.btn_peringkat)
         val btnLaporanActive = findViewById<ImageButton>(R.id.btn_laporan)
+
+        val stub = findViewById<ViewStub>(R.id.layout_stub)
+        stub.layoutResource = R.layout.fragment_halaman_utama
+        val inflated = stub.inflate()
+        currentLayout = inflated
 
         sliderView = findViewById(R.id.slider)
 
@@ -86,46 +95,47 @@ class MainActivity : AppCompatActivity() {
         sliderView.isAutoCycle = true
         sliderView.startAutoCycle()
 
-
-
         if (publicVariable.isLogin == true) {
             println("logged in")
         } else {
             println("not logged in")
         }
 
-        val stub_guest_kb = findViewById<ViewStub>(R.id.stub_guest_konten_buku)
-        stub_guest_kb.layoutResource = R.layout.fragment_konten_buku_terkini
+        val buku = listOf<DataBuku>(
+            DataBuku("pertama", "4.6", R.drawable.dummy_book_1),
+            DataBuku("second", "4.8", R.drawable.dummy_book_2),
+            DataBuku("ketiga", "4.3", R.drawable.dummy_book_3),
+            DataBuku("empakbang", "4.2", R.drawable.dummy_book_4),
+            DataBuku("limoy", "4.1", R.drawable.dummy_book_5),
+            DataBuku("enem", "4.5", R.drawable.dummy_book_6),
+            DataBuku("pertama", "4.6", R.drawable.dummy_book_1),
+            DataBuku("second", "4.8", R.drawable.dummy_book_2),
+            DataBuku("ketiga", "4.3", R.drawable.dummy_book_3),
+        )
 
-// Loop to create 9 instances
-        for (i in 0 until 9) {
-            // Inflate the layout inside a lambda function
-            val inflated = stub_guest_kb.inflate()
+        val pencetan : List<String> = buku.map { it.dJudulBuku }
 
-            // Check if it's time to switch to horizontal layout
-            if (i % 3 == 0 && i != 0) {
-                val layoutParams = inflated.layoutParams as LinearLayout.LayoutParams
-                layoutParams.setMargins(0, 0, 200, 0) // Adjust margins as needed
-                layoutParams.gravity = Gravity.START
-                inflated.layoutParams = layoutParams
-            }
+        recyclerView = findViewById(R.id.recyclerView_buku)
+        val adapter = BukuAdapter(this, buku)
 
-            // For the third horizontal, switch to the second horizontal
-            if (i == 6) {
-                val layoutParams = inflated.layoutParams as LinearLayout.LayoutParams
-                layoutParams.setMargins(0, 100, 0, 0) // Adjust margins as needed
-                layoutParams.gravity = Gravity.START
-                inflated.layoutParams = layoutParams
-            }
-        }
+        val layoutManager = GridLayoutManager(this, 3)
 
-        val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
+//        recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false )
+        recyclerView.layoutManager = layoutManager
+        recyclerView.setHasFixedSize(true)
+        recyclerView.adapter = adapter
 
-        btn_buku.setOnClickListener() {
-            showBook()
-        }
+//        val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
+//
+//        btn_buku.setOnClickListener() {
+//            showBook()
+//        }
 
         btnHomeActive.setOnClickListener(){
+
+            val adapter = BukuAdapter(this, buku)
+            recyclerView.adapter = adapter
+
             btnHomeActive.setImageResource(R.drawable.ic_homepage_active)
             btnKoleksiActive.setImageResource(R.drawable.ic_library_inactive)
             btnPeringkatActive.setImageResource(R.drawable.ic_peringkat_inactive)
@@ -133,18 +143,23 @@ class MainActivity : AppCompatActivity() {
 
             removeLayout(currentLayout!!)
 
-            // Inflate the new layout
             val inflater = layoutInflater
             val layout = inflater.inflate(R.layout.fragment_halaman_utama, null, false)
 
-            // Add the inflated layout to the parent view
-            val parentView = findViewById<ViewGroup>(R.id.parent_stub) // Replace with the actual ID of the parent view
+            val parentView = findViewById<ViewGroup>(R.id.parent_stub)
             parentView.addView(layout)
             currentLayout = layout
+
+            println("anjay")
+            println(stub_buku)
 
             sliderView = findViewById(R.id.slider)
 
             imageUrl = ArrayList()
+
+            val linearLayout = LinearLayout(this)
+            linearLayout.orientation = LinearLayout.VERTICAL
+
 
             imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_8)
             imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_2)
@@ -161,15 +176,6 @@ class MainActivity : AppCompatActivity() {
             sliderView.isAutoCycle = true
             sliderView.startAutoCycle()
 
-            val stub_guest_kb = findViewById<ViewStub>(R.id.stub_guest_konten_buku)
-            stub_guest_kb.layoutResource = R.layout.fragment_konten_buku_terkini
-            val inflate = stub_guest_kb.inflate()
-            stub_buku = inflate
-
-            val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
-            btn_buku.setOnClickListener() {
-                showBook()
-            }
         }
 
         btnKoleksiActive.setOnClickListener(){
@@ -179,14 +185,11 @@ class MainActivity : AppCompatActivity() {
             btnLaporanActive.setImageResource(R.drawable.ic_laporan_inactive)
 
             removeLayout(currentLayout!!)
-            removeLayout(stub_buku!!)
 
-            // Inflate the new layout
             val inflater = layoutInflater
             val layout = inflater.inflate(R.layout.fragment_koleksi, null, false)
 
-            // Add the inflated layout to the parent view
-            val parentView = findViewById<ViewGroup>(R.id.parent_stub) // Replace with the actual ID of the parent view
+            val parentView = findViewById<ViewGroup>(R.id.parent_stub)
             parentView.addView(layout)
             currentLayout = layout
 
