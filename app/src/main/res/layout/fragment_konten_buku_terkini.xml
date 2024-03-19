@@ -5,45 +5,48 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context=".GuestKontenBuku"
-    android:id="@+id/mainConstraint">
+    android:layout_marginEnd="4dp"
+    android:layout_marginBottom="4dp"
+    android:id="@+id/fragmen_buku"
+    android:background="@drawable/rounded_buku">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:background="@drawable/rounded_buku"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout
             android:id="@+id/buku_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/rounded_buku"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_buku">
 
                 <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="122dp"
-                    android:layout_height="198dp"
+                    android:id="@+id/cover_buku"
+                    android:layout_width="120dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/rounded_buku"
+                    android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/example_book_1" />
+                    app:srcCompat="@drawable/dummy_book_2" />
 
                 <View
-                    android:layout_width="122dp"
-                    android:layout_height="198dp"
+                    android:id="@+id/view2"
+                    android:layout_width="120dp"
+                    android:layout_height="180dp"
                     android:background="@drawable/gradient_book"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -51,39 +54,38 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="92dp"
+                    android:id="@+id/judul_buku"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="128dp"
-                    android:layout_marginEnd="15dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Who Moved My Cheese?"
                     android:textAlignment="center"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="10sp"
+                    app:layout_constraintBottom_toTopOf="@+id/LinearLayout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <LinearLayout
+                    android:id="@+id/LinearLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginBottom="20dp"
                     android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5">
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <ImageView
-                        android:id="@+id/imageView6"
+                        android:id="@+id/rating"
                         android:layout_width="12dp"
                         android:layout_height="12dp"
                         android:layout_weight="1"
                         app:srcCompat="@drawable/ic_rating" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/rating_buku"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
