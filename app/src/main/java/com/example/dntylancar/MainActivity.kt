@@ -7,12 +7,14 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewStub
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
@@ -25,6 +27,7 @@ import com.smarteist.autoimageslider.SliderView
 import java.util.Timer
 import kotlin.concurrent.schedule
 
+@Suppress("NAME_SHADOWING")
 class MainActivity : AppCompatActivity() {
 
     val publicVariable = PublicVariable.getInstance()
@@ -83,21 +86,43 @@ class MainActivity : AppCompatActivity() {
         sliderView.isAutoCycle = true
         sliderView.startAutoCycle()
 
-        val stub_guest_kb = findViewById<ViewStub>(R.id.stub_guest_konten_buku)
-        stub_guest_kb.layoutResource = R.layout.fragment_konten_buku_terkini
-        val inflate = stub_guest_kb.inflate()
-        stub_buku = inflate
 
-        val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
-
-        btn_buku.setOnClickListener() {
-            showBook()
-        }
 
         if (publicVariable.isLogin == true) {
             println("logged in")
         } else {
             println("not logged in")
+        }
+
+        val stub_guest_kb = findViewById<ViewStub>(R.id.stub_guest_konten_buku)
+        stub_guest_kb.layoutResource = R.layout.fragment_konten_buku_terkini
+
+// Loop to create 9 instances
+        for (i in 0 until 9) {
+            // Inflate the layout inside a lambda function
+            val inflated = stub_guest_kb.inflate()
+
+            // Check if it's time to switch to horizontal layout
+            if (i % 3 == 0 && i != 0) {
+                val layoutParams = inflated.layoutParams as LinearLayout.LayoutParams
+                layoutParams.setMargins(0, 0, 200, 0) // Adjust margins as needed
+                layoutParams.gravity = Gravity.START
+                inflated.layoutParams = layoutParams
+            }
+
+            // For the third horizontal, switch to the second horizontal
+            if (i == 6) {
+                val layoutParams = inflated.layoutParams as LinearLayout.LayoutParams
+                layoutParams.setMargins(0, 100, 0, 0) // Adjust margins as needed
+                layoutParams.gravity = Gravity.START
+                inflated.layoutParams = layoutParams
+            }
+        }
+
+        val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
+
+        btn_buku.setOnClickListener() {
+            showBook()
         }
 
         btnHomeActive.setOnClickListener(){
@@ -320,6 +345,7 @@ class MainActivity : AppCompatActivity() {
             inflatedView = inflate_f_detailBuku
 
             btn_detailBuku?.setOnClickListener() {
+
                 btn_detailBuku?.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.sixteen_sp))
                 btn_sinopsisBuku?.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.fourteen_sp))
                 btn_detailBuku?.setTextColor(Color.parseColor("#292929"))
@@ -390,7 +416,7 @@ class MainActivity : AppCompatActivity() {
                 showFragmentRating()
             }
         } else {
-
+            PublicFunction.PopUpFragmentLogin(this, layoutInflater)
         }
     }
 
