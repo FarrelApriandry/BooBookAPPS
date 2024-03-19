@@ -14,8 +14,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="269dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/rounded_detail_pengumuman">
 
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="5dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rounded_gray"
+                android:orientation="vertical"></LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/img_banner_3" />
         </LinearLayout>
 
         <LinearLayout
@@ -23,6 +37,49 @@
             android:layout_height="531dp"
             android:orientation="vertical"
             android:background="@color/white">
+
+            <TextView
+                android:id="@+id/textViewJudulPengumuman"
+                android:layout_width="414dp"
+                android:layout_height="64dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Judul Pengumuman"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="0dp"
+                android:background="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="68dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Detail :"
+                android:textColor="#80000000"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="365dp"
+                android:layout_height="380dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@string/lorem_ipsum"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
         </LinearLayout>
     </LinearLayout>

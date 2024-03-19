@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/koleksiLayout"
+    android:id="@+id/leaderboardLayout"
     style="@style/active_btn_homepage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="416dp"
+        android:layout_width="411dp"
         android:layout_height="300dp"
         android:background="@drawable/rounded_leaderboard"
         android:orientation="vertical"
@@ -98,14 +98,146 @@
         app:layout_constraintVertical_bias="1.0">
 
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_marginHorizontal="150dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/rounded_profile"
-            android:src="@drawable/img_banner_4" />
+        <LinearLayout
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageViewNomor2"
+                android:layout_width="35dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="130dp"
+                app:srcCompat="@drawable/nomor_2" />
+
+            <ImageView
+                android:id="@+id/imageViewProfile2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_profile"
+                android:src="@drawable/zyzy" />
+
+            <TextView
+                android:id="@+id/textViewNama2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:gravity="center"
+                android:text="Fritzy Rosmerian"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/textViewTotal2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginStart="20dp"
+                android:gravity="center"
+                android:text="999"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#CC000000"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="140dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageViewNomor1"
+                android:layout_width="62dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="70dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/nomor_1" />
+
+            <ImageView
+                android:id="@+id/imageViewProfile1"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/rounded_profile"
+                android:src="@drawable/zyzy" />
+
+            <TextView
+                android:id="@+id/textViewNama1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="Fritzy Rosmerian"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/textViewTotal1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="center"
+                android:text="9999"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#CC000000"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageViewNomor3"
+                android:layout_width="35dp"
+                android:layout_height="37dp"
+                android:layout_marginTop="130dp"
+                android:layout_marginStart="40dp"
+                app:srcCompat="@drawable/nomor_3" />
+
+            <ImageView
+                android:id="@+id/imageViewProfile3"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rounded_profile"
+                android:src="@drawable/zyzy" />
+
+            <TextView
+                android:id="@+id/textViewNama3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:text="Fritzy Rosmerian"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/textViewTotal3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:text="99"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_medium"
+                android:textColor="#CC000000"/>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

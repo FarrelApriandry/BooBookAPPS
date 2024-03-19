@@ -22,7 +22,7 @@
             android:layout_marginEnd="10dp"
             android:layout_marginRight="8dp"
             android:background="@drawable/rounded_profile"
-            android:src="@drawable/img_banner_4" />
+            android:src="@drawable/zyzy" />
 
         <TextView
             android:layout_width="22dp"
@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center"
-            android:text="500"
+            android:text="50"
             android:textColor="@color/white" />
 
         <TextView
