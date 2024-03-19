@@ -1,40 +1,33 @@
 package com.example.dntylancar
 
 import android.animation.ObjectAnimator
-import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.TypedValue
-import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewStub
 import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.HorizontalScrollView
 import android.widget.ImageButton
 import android.widget.LinearLayout
-import android.widget.ScrollView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.LayoutManager
 import com.example.dntylancar.databinding.FragmentBukuLampiranBinding
 import com.example.dntylancar.databinding.FragmentPopUpReportBinding
 import com.example.dntylancar.databinding.FragmentRatingPlaystoreBinding
+import com.example.dntylancarS.DataBuku
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.smarteist.autoimageslider.SliderView
 import java.util.Timer
 import kotlin.concurrent.schedule
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -59,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         val btnProfile = findViewById<View>(R.id.btn_profile) as ImageButton
         btnProfile.setOnClickListener {
@@ -101,7 +95,8 @@ class MainActivity : AppCompatActivity() {
             println("not logged in")
         }
 
-        val buku = listOf<DataBuku>(
+
+        val buku: MutableList<DataBuku> = mutableListOf(
             DataBuku("pertama", "4.6", R.drawable.dummy_book_1),
             DataBuku("second", "4.8", R.drawable.dummy_book_2),
             DataBuku("ketiga", "4.3", R.drawable.dummy_book_3),
@@ -115,26 +110,18 @@ class MainActivity : AppCompatActivity() {
 
         val pencetan : List<String> = buku.map { it.dJudulBuku }
 
-        recyclerView = findViewById(R.id.recyclerView_buku)
+        recyclerView =  findViewById(R.id.recyclerView_buku)
+
         val adapter = BukuAdapter(this, buku)
 
         val layoutManager = GridLayoutManager(this, 3)
 
-//        recyclerview.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false )
         recyclerView.layoutManager = layoutManager
         recyclerView.setHasFixedSize(true)
         recyclerView.adapter = adapter
 
-//        val btn_buku = findViewById<FrameLayout>(R.id.buku_1)
-//
-//        btn_buku.setOnClickListener() {
-//            showBook()
-//        }
 
         btnHomeActive.setOnClickListener(){
-
-            val adapter = BukuAdapter(this, buku)
-            recyclerView.adapter = adapter
 
             btnHomeActive.setImageResource(R.drawable.ic_homepage_active)
             btnKoleksiActive.setImageResource(R.drawable.ic_library_inactive)
@@ -150,9 +137,6 @@ class MainActivity : AppCompatActivity() {
             parentView.addView(layout)
             currentLayout = layout
 
-            println("anjay")
-            println(stub_buku)
-
             sliderView = findViewById(R.id.slider)
 
             imageUrl = ArrayList()
@@ -161,12 +145,12 @@ class MainActivity : AppCompatActivity() {
             linearLayout.orientation = LinearLayout.VERTICAL
 
 
-            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_8)
             imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_2)
             imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_3)
             imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_4)
             imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_5)
             imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_6)
+            imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_8)
             imageUrl.add("android.resource://" + packageName + "/" + R.drawable.img_banner_7)
 
             sliderAdapter = SliderAdapter( imageUrl)
@@ -175,6 +159,41 @@ class MainActivity : AppCompatActivity() {
             sliderView.scrollTimeInSec = 10
             sliderView.isAutoCycle = true
             sliderView.startAutoCycle()
+
+
+            // Update adapter data
+            val buku: MutableList<DataBuku> = mutableListOf(
+                DataBuku("pertama", "4.6", R.drawable.dummy_book_1),
+                DataBuku("second", "4.8", R.drawable.dummy_book_2),
+                DataBuku("ketiga", "4.3", R.drawable.dummy_book_3),
+                DataBuku("empakbang", "4.2", R.drawable.dummy_book_4),
+                DataBuku("limoy", "4.1", R.drawable.dummy_book_5),
+                DataBuku("enem", "4.5", R.drawable.dummy_book_6),
+                DataBuku("pertama", "4.6", R.drawable.dummy_book_1),
+                DataBuku("second", "4.8", R.drawable.dummy_book_2),
+                DataBuku("ketiga", "4.3", R.drawable.dummy_book_3)
+            )
+
+//            recyclerView = findViewById(R.id.recyclerView_buku)
+//
+//            val layoutManager = GridLayoutManager(this, 3)
+//            val params = recyclerView.layoutParams
+//
+//            recyclerView.adapter = adapter
+//            params.width = ConstraintLayout.LayoutParams.WRAP_CONTENT
+//            recyclerView.layoutParams = params
+//            recyclerView.requestLayout()
+//            recyclerView.layoutManager = layoutManager
+//            recyclerView.setHasFixedSize(true)
+
+            recyclerView = findViewById(R.id.recyclerView_buku) as RecyclerView
+
+            val layoutManager = GridLayoutManager(this, 3)
+
+            recyclerView.layoutManager = layoutManager
+
+//            recyclerView.layoutManager = layoutManager
+            recyclerView.adapter = adapter
 
         }
 
@@ -253,7 +272,6 @@ class MainActivity : AppCompatActivity() {
             btnLaporanActive.setImageResource(R.drawable.ic_laporan_inactive)
 
             removeLayout(currentLayout!!)
-            removeLayout(stub_buku!!)
 
             val inflater = layoutInflater
             val layout = inflater.inflate(R.layout.fragment_peringkat, null, false)
@@ -301,7 +319,6 @@ class MainActivity : AppCompatActivity() {
             btnLaporanActive.setImageResource(R.drawable.ic_laporan_active)
 
             removeLayout(currentLayout!!)
-            removeLayout(stub_buku!!)
 
             // Inflate the new layout
             val inflater = layoutInflater
