@@ -41,7 +41,7 @@
             <TextView
                 android:id="@+id/textViewJudulPengumuman"
                 android:layout_width="414dp"
-                android:layout_height="64dp"
+                android:layout_height="56dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
                 android:fontFamily="@font/poppins_medium"
